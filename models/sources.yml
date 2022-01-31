@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: staging
+    database:  data-analytics-265916
+    schema: dwh_v2
+    tables:
+      - name: chargebee_customers
+      - name: chargebee_customers_view
+        description: "chargebee_customers with casting done"
+      - name: chargebee_invoices
+      - name: chargebee_invoices_view
+        description: "chargebee_invoices with casting done"
+      - name: chargebee_subscriptions
+      - name: chargebee_subscriptions_view
+        description: "chargebee_invoices with casting done"
+      - name: chargebee_transactions
+      - name: chargebee_transactions_view
+        description: "chargebee_invoices with casting done"
+      - name: clicks_able
+      - name: clicks_able_temp
+      - name: clicks_hint
+      - name: clicks_hint_temp
+      - name: mparticle_able_raw
+      - name: mparticle_hint_android_events
+      - name: mparticle_hint_ios_events
+      - name: mparticle_hint_raw
+      - name: mparticle_hint_start_use
+      - name: revenuecat_able
+      - name: revenuecat_hint 
