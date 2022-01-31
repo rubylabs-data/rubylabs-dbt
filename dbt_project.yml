@@ -51,3 +51,8 @@ models:
         - "backend"
         - "lightdash"
       +schema: backend
+    shared:
+      +tags:
+        - "shared"
+        - "external"
+      +schema: shared
