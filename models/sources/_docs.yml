@@ -1,0 +1,261 @@
+version: 2
+
+models:
+  - name: chargebee_customers_view
+    description: "details about each customer on web"
+    columns:
+      - name: app_name
+        description: "? from API docs"
+      - name: customer_id
+        description: "? from API docs"
+      - name: email
+        description: "? from API docs"
+      - name: first_name
+        description: "? from API docs"
+      - name: last_name
+        description: "? from API docs"
+      - name: company
+        description: "? from API docs"
+      - name: phone
+        description: "? from API docs"
+      - name: vat_number
+        description: "? from API docs"
+      - name: billing_address_line1
+        description: "? from API docs"
+      - name: billing_address_line2
+        description: "? from API docs"
+      - name: billing_address_city
+        description: "? from API docs"
+      - name: billing_address_state
+        description: "? from API docs"
+      - name: country
+        description: "? from API docs"
+      - name: billing_address_zip
+        description: "? from API docs"
+      - name: auto_collection
+        description: "? from API docs"
+      - name: offline_payment_method
+        description: "? from API docs"
+      - name: card_status
+        description: "? from API docs"
+      - name: created_at
+        description: "? from API docs"
+      - name: mparticle_id
+        description: "? from API docs"
+      - name: advertising_id
+        description: "? from API docs"
+      - name: acc
+        description: "? from API docs"
+      - name: cid
+        description: "? from API docs"
+      - name: billing_address_state_code
+        description: "? from API docs"
+      - name: customer_portal_status
+        description: "? from API docs"
+      - name: net_term_days
+        description: "? from API docs"
+      - name: taxability
+        description: "? from API docs"
+      - name: locale
+        description: "? from API docs"
+      - name: billing_address_first_name
+        description: "? from API docs"
+      - name: billing_address_last_name
+        description: "? from API docs"
+      - name: billing_address_email
+        description: "? from API docs"
+      - name: billing_address_company
+        description: "? from API docs"
+      - name: billing_address_phone
+        description: "? from API docs"
+      - name: billing_address_line3
+        description: "? from API docs"
+      - name: billing_address_validation_status
+        description: "? from API docs"
+      - name: is_location_valid
+        description: "? from API docs"
+      - name: vat_number_status
+        description: "? from API docs"
+      - name: vat_number_validated_time
+        description: "? from API docs"
+      - name: vat_number_prefix
+        description: "? from API docs"
+      - name: parent
+        description: "? from API docs"
+      - name: payment_owner
+        description: "? from API docs"
+      - name: auto_close_invoice
+
+  - name: chargebee_invoices_view
+    description: "details about each invoice on web"
+    columns:
+      - name: app_name
+        description: "? from API docs"
+      - name: customer_id
+        description: "? from API docs"
+      - name: subscription_id
+        description: "? from API docs"
+      - name: invoice_date
+        description: "? from API docs"
+      - name: start_date
+        description: "? from API docs"
+      - name: paid_on
+        description: "? from API docs"
+      - name: amount
+        description: "? from API docs"
+      - name: status
+        description: "? from API docs"
+      - name: country
+        description: "? from API docs"
+      - name: next_retry
+        description: "? from API docs"
+      - name: refunded_amount
+        description: "? from API docs"
+      - name: recurring
+        description: "? from API docs"
+      - name: first_invoice
+        description: "? from API docs"
+      - name: customer_first_name
+        description: "? from API docs"
+      - name: customer_last_name
+        description: "? from API docs"
+      - name: email
+        description: "? from API docs"
+      - name: customer_company
+        description: "? from API docs"
+      - name: tax_total
+        description: "? from API docs"
+      - name: vat_number
+        description: "? from API docs"
+      - name: po_number
+        description: "? from API docs"
+      - name: amount_due
+        description: "? from API docs"
+      - name: adjustments
+        description: "? from API docs"
+      - name: credits_applied
+        description: "? from API docs"
+      - name: payments
+        description: "? from API docs"
+      - name: write_off_amount
+        description: "? from API docs"
+      - name: currency
+        description: "? from API docs"
+      - name: net_term_days
+        description: "? from API docs"
+      - name: due_date
+        description: "? from API docs"
+      - name: voided_at
+        description: "? from API docs"
+      - name: invoice_number
+        description: "? from API docs"
+      - name: acc
+        description: "? from API docs"
+      - name: dunning_status
+        description: "? from API docs"
+
+  - name: chargebee_subscriptions_view
+    description: "details about each subscription on web"
+    columns:
+      - name: app_name
+        description: "? from API docs"
+      - name: subscription_id
+        description: "? from API docs"
+      - name: customer_id
+        description: "? from API docs"
+      - name: invoice_number
+        description: "? from API docs"
+      - name: plan_quantity
+        description: "? from API docs"
+      - name: status
+        description: "? from API docs"
+      - name: start_date
+        description: "? from API docs"
+      - name: trial_start
+        description: "? from API docs"
+      - name: trial_end
+        description: "? from API docs"
+      - name: curr_term_start
+        description: "? from API docs"
+      - name: curr_term_end
+        description: "? from API docs"
+      - name: next_billing
+        description: "? from API docs"
+      - name: remaining_billing_cycles
+        description: "? from API docs"
+      - name: created_at
+        description: "? from API docs"
+      - name: started_at
+        description: "? from API docs"
+      - name: activated_at
+        description: "? from API docs"
+      - name: cancelled_at
+        description: "? from API docs"
+      - name: acc
+        description: "? from API docs"
+      - name: cancel_reason
+        description: "? from API docs"
+      - name: next_billing_amount
+        description: "? from API docs"
+      - name: po_number
+        description: "? from API docs"
+      - name: mrr
+        description: "? from API docs"
+      - name: currency
+        description: "? from API docs"
+      - name: subscription_plan_unit_price
+        description: "? from API docs"
+      - name: subscription_setup_fee
+        description: "? from API docs"
+      - name: subscription_pause_date
+        description: "? from API docs"
+      - name: subscriptions_resume_date
+        description: "? from API docs"
+      - name: subscription_plan_amount
+        description: "? from API docs"
+      - name: subscription_plan_quantity_in_decimal
+        description: "? from API docs"
+      - name: subscription_plan_unit_price_in_decimal
+        description: "? from API docs"
+      - name: subscription_plan_amount_in_decimal
+        description: "? from API docs"
+
+  - name: chargebee_transactions_view
+    description: "details about each transaction on web"
+    columns:
+      - name: app_name
+        description: "? from API docs"
+      - name: transaction_id
+        description: "? from API docs"
+      - name: customer_id
+        description: "? from API docs"
+      - name: invoice_number
+        description: "? from API docs"
+      - name: date
+        description: "? from API docs"
+      - name: type
+        description: "? from API docs"
+      - name: payment_method
+        description: "? from API docs"
+      - name: amount
+        description: "? from API docs"
+      - name: status
+        description: "? from API docs"
+      - name: error_text
+        description: "? from API docs"
+      - name: gateway
+        description: "? from API docs"
+      - name: card_type
+        description: "? from API docs"
+      - name: customer_email
+        description: "? from API docs"
+      - name: currency
+        description: "? from API docs"
+      - name: amount_unused
+        description: "? from API docs"
+      - name: amount_capturable
+        description: "? from API docs"
+      - name: gateway_account_id
+        description: "? from API docs"
+      - name: acc
+        description: "? from API docs"
