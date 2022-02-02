@@ -11,4 +11,4 @@
     , MAX(refunded_at) refunded_at
     , MAX(unsubscribe_detected_at) cancelled_at
     from {{ref('app_transactions_eph')}} 
-    group by 1,2,3,4,5,6,7,8,9,10,11,12
+    {{ dbt_utils.group_by(n=12) }}
