@@ -5,26 +5,2891 @@ sources:
     database:  data-analytics-265916
     schema: dwh_v2
     tables:
-      - name: chargebee_customers
-      - name: chargebee_customers_view
-        description: "chargebee_customers with casting done"
-      - name: chargebee_invoices
-      - name: chargebee_invoices_view
-        description: "chargebee_invoices with casting done"
-      - name: chargebee_subscriptions
-      - name: chargebee_subscriptions_view
-        description: "chargebee_invoices with casting done"
-      - name: chargebee_transactions
-      - name: chargebee_transactions_view
-        description: "chargebee_invoices with casting done"
-      - name: clicks_able
-      - name: clicks_able_temp
-      - name: clicks_hint
-      - name: clicks_hint_temp
-      - name: mparticle_able_raw
-      - name: mparticle_hint_android_events
-      - name: mparticle_hint_ios_events
-      - name: mparticle_hint_raw
-      - name: mparticle_hint_start_use
-      - name: revenuecat_able
-      - name: revenuecat_hint 
+    - name: chargebee_customers
+      columns:
+        - name: event_date
+          description: ""
+        - name: site
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: email
+          description: ""
+        - name: first_name
+          description: ""
+        - name: last_name
+          description: ""
+        - name: company
+          description: ""
+        - name: phone
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: billing_address_line1
+          description: ""
+        - name: billing_address_line2
+          description: ""
+        - name: billing_address_city
+          description: ""
+        - name: billing_address_state
+          description: ""
+        - name: billing_address_country
+          description: ""
+        - name: billing_address_zip
+          description: ""
+        - name: auto_collection
+          description: ""
+        - name: offline_payment_method
+          description: ""
+        - name: card_status
+          description: ""
+        - name: created_at
+          description: ""
+        - name: mparticleid
+          description: ""
+        - name: advertisingid
+          description: ""
+        - name: scheduled_cancellation
+          description: ""
+        - name: cid
+          description: ""
+        - name: billing_address_state_code
+          description: ""
+        - name: customer_portal_status
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: taxability
+          description: ""
+        - name: locale
+          description: ""
+        - name: billing_address_first_name
+          description: ""
+        - name: billing_address_last_name
+          description: ""
+        - name: billing_address_email
+          description: ""
+        - name: billing_address_company
+          description: ""
+        - name: billing_address_phone
+          description: ""
+        - name: billing_address_line3
+          description: ""
+        - name: billing_address_validation_status
+          description: ""
+        - name: is_location_valid
+          description: ""
+        - name: vat_number_status
+          description: ""
+        - name: vat_number_validated_time
+          description: ""
+        - name: vat_number_prefix
+          description: ""
+        - name: parent
+          description: ""
+        - name: payment_owner
+          description: ""
+        - name: invoice_owner
+          description: ""
+        - name: auto_close_invoice
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_customers_bac
+      columns:
+        - name: partition_created_at
+          description: ""
+        - name: site
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: email
+          description: ""
+        - name: first_name
+          description: ""
+        - name: last_name
+          description: ""
+        - name: company
+          description: ""
+        - name: phone
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: billing_address_line1
+          description: ""
+        - name: billing_address_line2
+          description: ""
+        - name: billing_address_city
+          description: ""
+        - name: billing_address_state
+          description: ""
+        - name: billing_address_country
+          description: ""
+        - name: billing_address_zip
+          description: ""
+        - name: auto_collection
+          description: ""
+        - name: offline_payment_method
+          description: ""
+        - name: card_status
+          description: ""
+        - name: created_at
+          description: ""
+        - name: mparticleid
+          description: ""
+        - name: advertisingid
+          description: ""
+        - name: scheduled_cancellation
+          description: ""
+        - name: cid
+          description: ""
+        - name: billing_address_state_code
+          description: ""
+        - name: customer_portal_status
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: taxability
+          description: ""
+        - name: locale
+          description: ""
+        - name: billing_address_first_name
+          description: ""
+        - name: billing_address_last_name
+          description: ""
+        - name: billing_address_email
+          description: ""
+        - name: billing_address_company
+          description: ""
+        - name: billing_address_phone
+          description: ""
+        - name: billing_address_line3
+          description: ""
+        - name: billing_address_validation_status
+          description: ""
+        - name: is_location_valid
+          description: ""
+        - name: vat_number_status
+          description: ""
+        - name: vat_number_validated_time
+          description: ""
+        - name: vat_number_prefix
+          description: ""
+        - name: parent
+          description: ""
+        - name: payment_owner
+          description: ""
+        - name: invoice_owner
+          description: ""
+        - name: auto_close_invoice
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_customers_view
+      description: "chargebee_customers with casting done"
+      columns:
+        - name: app_name
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: email
+          description: ""
+        - name: first_name
+          description: ""
+        - name: last_name
+          description: ""
+        - name: company
+          description: ""
+        - name: phone
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: billing_address_line1
+          description: ""
+        - name: billing_address_line2
+          description: ""
+        - name: billing_address_city
+          description: ""
+        - name: billing_address_state
+          description: ""
+        - name: country
+          description: ""
+        - name: billing_address_zip
+          description: ""
+        - name: auto_collection
+          description: ""
+        - name: offline_payment_method
+          description: ""
+        - name: card_status
+          description: ""
+        - name: created_at
+          description: ""
+        - name: mparticle_id
+          description: ""
+        - name: advertising_id
+          description: ""
+        - name: acc
+          description: ""
+        - name: cid
+          description: ""
+        - name: billing_address_state_code
+          description: ""
+        - name: customer_portal_status
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: taxability
+          description: ""
+        - name: locale
+          description: ""
+        - name: billing_address_first_name
+          description: ""
+        - name: billing_address_last_name
+          description: ""
+        - name: billing_address_email
+          description: ""
+        - name: billing_address_company
+          description: ""
+        - name: billing_address_phone
+          description: ""
+        - name: billing_address_line3
+          description: ""
+        - name: billing_address_validation_status
+          description: ""
+        - name: is_location_valid
+          description: ""
+        - name: vat_number_status
+          description: ""
+        - name: vat_number_validated_time
+          description: ""
+        - name: vat_number_prefix
+          description: ""
+        - name: parent
+          description: ""
+        - name: payment_owner
+          description: ""
+        - name: auto_close_invoice
+          description: ""
+
+    - name: chargebee_invoices
+      columns:
+        - name: event_date
+          description: ""
+        - name: site
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: subscription_id
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: invoice_date
+          description: ""
+        - name: start_date
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: paid_on
+          description: ""
+        - name: next_retry
+          description: ""
+        - name: refunded_amount
+          description: ""
+        - name: recurring
+          description: ""
+        - name: first_invoice
+          description: ""
+        - name: customer_first_name
+          description: ""
+        - name: customer_last_name
+          description: ""
+        - name: customer_email
+          description: ""
+        - name: customer_company
+          description: ""
+        - name: tax_total
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: po_number
+          description: ""
+        - name: amount_due
+          description: ""
+        - name: adjustments
+          description: ""
+        - name: credits_applied
+          description: ""
+        - name: payments
+          description: ""
+        - name: write_off_amount
+          description: ""
+        - name: currency
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: due_date
+          description: ""
+        - name: voided_at
+          description: ""
+        - name: customer_billing_country
+          description: ""
+        - name: dunning_status
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_invoices_bac
+      columns:
+        - name: partition_invoice_date
+          description: ""
+        - name: site
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: subscription_id
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: invoice_date
+          description: ""
+        - name: start_date
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: paid_on
+          description: ""
+        - name: next_retry
+          description: ""
+        - name: refunded_amount
+          description: ""
+        - name: recurring
+          description: ""
+        - name: first_invoice
+          description: ""
+        - name: customer_first_name
+          description: ""
+        - name: customer_last_name
+          description: ""
+        - name: customer_email
+          description: ""
+        - name: customer_company
+          description: ""
+        - name: tax_total
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: po_number
+          description: ""
+        - name: amount_due
+          description: ""
+        - name: adjustments
+          description: ""
+        - name: credits_applied
+          description: ""
+        - name: payments
+          description: ""
+        - name: write_off_amount
+          description: ""
+        - name: currency
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: due_date
+          description: ""
+        - name: voided_at
+          description: ""
+        - name: customer_billing_country
+          description: ""
+        - name: dunning_status
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_invoices_view
+      description: "chargebee_invoices with casting done"
+      columns:
+        - name: app_name
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: subscription_id
+          description: ""
+        - name: invoice_date
+          description: ""
+        - name: start_date
+          description: ""
+        - name: paid_on
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: country
+          description: ""
+        - name: next_retry
+          description: ""
+        - name: refunded_amount
+          description: ""
+        - name: recurring
+          description: ""
+        - name: first_invoice
+          description: ""
+        - name: customer_first_name
+          description: ""
+        - name: customer_last_name
+          description: ""
+        - name: email
+          description: ""
+        - name: customer_company
+          description: ""
+        - name: tax_total
+          description: ""
+        - name: vat_number
+          description: ""
+        - name: po_number
+          description: ""
+        - name: amount_due
+          description: ""
+        - name: adjustments
+          description: ""
+        - name: credits_applied
+          description: ""
+        - name: payments
+          description: ""
+        - name: write_off_amount
+          description: ""
+        - name: currency
+          description: ""
+        - name: net_term_days
+          description: ""
+        - name: due_date
+          description: ""
+        - name: voided_at
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: acc
+          description: ""
+        - name: dunning_status
+          description: ""
+
+    - name: chargebee_subscriptions
+      columns:
+        - name: event_date
+          description: ""
+        - name: site
+          description: ""
+        - name: subscriptions_id
+          description: ""
+        - name: subscriptions_plan_id
+          description: ""
+        - name: subscriptions_plan_quantity
+          description: ""
+        - name: subscriptions_status
+          description: ""
+        - name: subscriptions_start_date
+          description: ""
+        - name: subscriptions_trial_start
+          description: ""
+        - name: subscriptions_trial_end
+          description: ""
+        - name: subscriptions_current_term_start
+          description: ""
+        - name: subscriptions_current_term_end
+          description: ""
+        - name: subscriptions_remaining_billing_cycles
+          description: ""
+        - name: subscriptions_created_at
+          description: ""
+        - name: subscriptions_started_at
+          description: ""
+        - name: subscriptions_activated_at
+          description: ""
+        - name: subscriptions_cancelled_at
+          description: ""
+        - name: subscriptions_cancel_reason
+          description: ""
+        - name: customers_id
+          description: ""
+        - name: customers_first_name
+          description: ""
+        - name: customers_last_name
+          description: ""
+        - name: customers_email
+          description: ""
+        - name: customers_phone
+          description: ""
+        - name: customers_company
+          description: ""
+        - name: customers_vat_number
+          description: ""
+        - name: customers_auto_collection
+          description: ""
+        - name: customers_offline_payment_method
+          description: ""
+        - name: customers_auto_close_invoice
+          description: ""
+        - name: customers_created_at
+          description: ""
+        - name: cards_first_name
+          description: ""
+        - name: cards_last_name
+          description: ""
+        - name: cards_card_type
+          description: ""
+        - name: billing_addresses_billing_addr1
+          description: ""
+        - name: billing_addresses_billing_addr2
+          description: ""
+        - name: billing_addresses_billing_city
+          description: ""
+        - name: billing_addresses_billing_state
+          description: ""
+        - name: billing_addresses_billing_country
+          description: ""
+        - name: billing_addresses_billing_zip
+          description: ""
+        - name: addresses_label
+          description: ""
+        - name: addresses_first_name
+          description: ""
+        - name: addresses_last_name
+          description: ""
+        - name: addresses_email
+          description: ""
+        - name: addresses_company
+          description: ""
+        - name: addresses_phone
+          description: ""
+        - name: addresses_addr
+          description: ""
+        - name: addresses_extended_addr
+          description: ""
+        - name: addresses_extended_addr2
+          description: ""
+        - name: addresses_city
+          description: ""
+        - name: addresses_state
+          description: ""
+        - name: addresses_country
+          description: ""
+        - name: addresses_zip
+          description: ""
+        - name: billing_addresses_billing_state_code
+          description: ""
+        - name: customers_cf_mparticle_id
+          description: ""
+        - name: customers_cf_advertising_id
+          description: ""
+        - name: customers_cf_scheduled_cancellation
+          description: ""
+        - name: customers_cf_cid
+          description: ""
+        - name: addresses_state_code
+          description: ""
+        - name: subscriptions_next_billing_amount
+          description: ""
+        - name: subscriptions_po_number
+          description: ""
+        - name: subscriptions_mrr
+          description: ""
+        - name: customers_customer_portal_status
+          description: ""
+        - name: subscriptions_currency
+          description: ""
+        - name: billing_addresses_validation_status
+          description: ""
+        - name: addresses_validation_status
+          description: ""
+        - name: customers_net_term_days
+          description: ""
+        - name: customers_taxability
+          description: ""
+        - name: customers_locale
+          description: ""
+        - name: subscriptions_next_billing_at
+          description: ""
+        - name: subscriptions_plan_unit_price
+          description: ""
+        - name: subscriptions_setup_fee
+          description: ""
+        - name: billing_addresses_first_name
+          description: ""
+        - name: billing_addresses_last_name
+          description: ""
+        - name: billing_addresses_email
+          description: ""
+        - name: billing_addresses_company
+          description: ""
+        - name: billing_addresses_phone
+          description: ""
+        - name: billing_addresses_billing_addr3
+          description: ""
+        - name: subscriptions_auto_collection
+          description: ""
+        - name: subscriptions_offline_payment_method
+          description: ""
+        - name: subscriptions_auto_close_invoices
+          description: ""
+        - name: subscriptions_create_pending_invoices
+          description: ""
+        - name: subscriptions_pause_date
+          description: ""
+        - name: subscriptions_resume_date
+          description: ""
+        - name: subscriptions_plan_amount
+          description: ""
+        - name: subscriptions_plan_quantity_in_decimal
+          description: ""
+        - name: subscriptions_plan_unit_price_in_decimal
+          description: ""
+        - name: subscriptions_plan_amount_in_decimal
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_subscriptions_bac
+      columns:
+        - name: partition_subscriptions_created_at
+          description: ""
+        - name: site
+          description: ""
+        - name: subscriptions_id
+          description: ""
+        - name: subscriptions_plan_id
+          description: ""
+        - name: subscriptions_plan_quantity
+          description: ""
+        - name: subscriptions_status
+          description: ""
+        - name: subscriptions_start_date
+          description: ""
+        - name: subscriptions_trial_start
+          description: ""
+        - name: subscriptions_trial_end
+          description: ""
+        - name: subscriptions_current_term_start
+          description: ""
+        - name: subscriptions_current_term_end
+          description: ""
+        - name: subscriptions_remaining_billing_cycles
+          description: ""
+        - name: subscriptions_created_at
+          description: ""
+        - name: subscriptions_started_at
+          description: ""
+        - name: subscriptions_activated_at
+          description: ""
+        - name: subscriptions_cancelled_at
+          description: ""
+        - name: subscriptions_cancel_reason
+          description: ""
+        - name: customers_id
+          description: ""
+        - name: customers_first_name
+          description: ""
+        - name: customers_last_name
+          description: ""
+        - name: customers_email
+          description: ""
+        - name: customers_phone
+          description: ""
+        - name: customers_company
+          description: ""
+        - name: customers_vat_number
+          description: ""
+        - name: customers_auto_collection
+          description: ""
+        - name: customers_offline_payment_method
+          description: ""
+        - name: customers_auto_close_invoice
+          description: ""
+        - name: customers_created_at
+          description: ""
+        - name: cards_first_name
+          description: ""
+        - name: cards_last_name
+          description: ""
+        - name: cards_card_type
+          description: ""
+        - name: billing_addresses_billing_addr1
+          description: ""
+        - name: billing_addresses_billing_addr2
+          description: ""
+        - name: billing_addresses_billing_city
+          description: ""
+        - name: billing_addresses_billing_state
+          description: ""
+        - name: billing_addresses_billing_country
+          description: ""
+        - name: billing_addresses_billing_zip
+          description: ""
+        - name: addresses_label
+          description: ""
+        - name: addresses_first_name
+          description: ""
+        - name: addresses_last_name
+          description: ""
+        - name: addresses_email
+          description: ""
+        - name: addresses_company
+          description: ""
+        - name: addresses_phone
+          description: ""
+        - name: addresses_addr
+          description: ""
+        - name: addresses_extended_addr
+          description: ""
+        - name: addresses_extended_addr2
+          description: ""
+        - name: addresses_city
+          description: ""
+        - name: addresses_state
+          description: ""
+        - name: addresses_country
+          description: ""
+        - name: addresses_zip
+          description: ""
+        - name: billing_addresses_billing_state_code
+          description: ""
+        - name: customers_cf_mparticle_id
+          description: ""
+        - name: customers_cf_advertising_id
+          description: ""
+        - name: customers_cf_scheduled_cancellation
+          description: ""
+        - name: customers_cf_cid
+          description: ""
+        - name: addresses_state_code
+          description: ""
+        - name: subscriptions_next_billing_amount
+          description: ""
+        - name: subscriptions_po_number
+          description: ""
+        - name: subscriptions_mrr
+          description: ""
+        - name: customers_customer_portal_status
+          description: ""
+        - name: subscriptions_currency
+          description: ""
+        - name: billing_addresses_validation_status
+          description: ""
+        - name: addresses_validation_status
+          description: ""
+        - name: customers_net_term_days
+          description: ""
+        - name: customers_taxability
+          description: ""
+        - name: customers_locale
+          description: ""
+        - name: subscriptions_next_billing_at
+          description: ""
+        - name: subscriptions_plan_unit_price
+          description: ""
+        - name: subscriptions_setup_fee
+          description: ""
+        - name: billing_addresses_first_name
+          description: ""
+        - name: billing_addresses_last_name
+          description: ""
+        - name: billing_addresses_email
+          description: ""
+        - name: billing_addresses_company
+          description: ""
+        - name: billing_addresses_phone
+          description: ""
+        - name: billing_addresses_billing_addr3
+          description: ""
+        - name: subscriptions_auto_collection
+          description: ""
+        - name: subscriptions_offline_payment_method
+          description: ""
+        - name: subscriptions_auto_close_invoices
+          description: ""
+        - name: subscriptions_create_pending_invoices
+          description: ""
+        - name: subscriptions_pause_date
+          description: ""
+        - name: subscriptions_resume_date
+          description: ""
+        - name: subscriptions_plan_amount
+          description: ""
+        - name: subscriptions_plan_quantity_in_decimal
+          description: ""
+        - name: subscriptions_plan_unit_price_in_decimal
+          description: ""
+        - name: subscriptions_plan_amount_in_decimal
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_subscriptions_view
+      description: "chargebee_subscriptions with casting done"
+      columns:
+        - name: app_name
+          description: ""
+        - name: subscription_id
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: plan_id
+          description: ""
+        - name: plan_quantity
+          description: ""
+        - name: status
+          description: ""
+        - name: start_date
+          description: ""
+        - name: trial_start
+          description: ""
+        - name: trial_end
+          description: ""
+        - name: curr_term_start
+          description: ""
+        - name: curr_term_end
+          description: ""
+        - name: next_billing
+          description: ""
+        - name: remaining_billing_cycles
+          description: ""
+        - name: created_at
+          description: ""
+        - name: started_at
+          description: ""
+        - name: activated_at
+          description: ""
+        - name: cancelled_at
+          description: ""
+        - name: acc
+          description: ""
+        - name: cancel_reason
+          description: ""
+        - name: next_billing_amount
+          description: ""
+        - name: po_number
+          description: ""
+        - name: mrr
+          description: ""
+        - name: currency
+          description: ""
+        - name: subscription_plan_unit_price
+          description: ""
+        - name: subscription_setup_fee
+          description: ""
+        - name: subscription_pause_date
+          description: ""
+        - name: subscriptions_resume_date
+          description: ""
+        - name: subscription_plan_amount
+          description: ""
+        - name: subscription_plan_quantity_in_decimal
+          description: ""
+        - name: subscription_plan_unit_price_in_decimal
+          description: ""
+        - name: subscription_plan_amount_in_decimal
+          description: ""
+
+    - name: chargebee_transactions
+      columns:
+        - name: event_date
+          description: ""
+        - name: site
+          description: ""
+        - name: transaction_id
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: date
+          description: ""
+        - name: type
+          description: ""
+        - name: payment_method
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: authorization_reason
+          description: ""
+        - name: error_code
+          description: ""
+        - name: error_text
+          description: ""
+        - name: gateway
+          description: ""
+        - name: card_type
+          description: ""
+        - name: id_at_gateway
+          description: ""
+        - name: reference_number
+          description: ""
+        - name: voided_at
+          description: ""
+        - name: customer_first_name
+          description: ""
+        - name: customer_last_name
+          description: ""
+        - name: customer_email
+          description: ""
+        - name: customer_company
+          description: ""
+        - name: currency
+          description: ""
+        - name: amount_unused
+          description: ""
+        - name: amount_capturable
+          description: ""
+        - name: creditnote_number
+          description: ""
+        - name: reference_authorization_id
+          description: ""
+        - name: reference_transaction_id
+          description: ""
+        - name: gateway_account_id
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_transactions_bac
+      columns:
+        - name: partition_date
+          description: ""
+        - name: site
+          description: ""
+        - name: transaction_id
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: date
+          description: ""
+        - name: type
+          description: ""
+        - name: payment_method
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: authorization_reason
+          description: ""
+        - name: error_code
+          description: ""
+        - name: error_text
+          description: ""
+        - name: gateway
+          description: ""
+        - name: card_type
+          description: ""
+        - name: id_at_gateway
+          description: ""
+        - name: reference_number
+          description: ""
+        - name: voided_at
+          description: ""
+        - name: customer_first_name
+          description: ""
+        - name: customer_last_name
+          description: ""
+        - name: customer_email
+          description: ""
+        - name: customer_company
+          description: ""
+        - name: currency
+          description: ""
+        - name: amount_unused
+          description: ""
+        - name: amount_capturable
+          description: ""
+        - name: creditnote_number
+          description: ""
+        - name: reference_authorization_id
+          description: ""
+        - name: reference_transaction_id
+          description: ""
+        - name: gateway_account_id
+          description: ""
+        - name: load_ts
+          description: ""
+        - name: update_ts
+          description: ""
+
+    - name: chargebee_transactions_view
+      description: "chargebee_transactions with casting done"
+      columns:
+        - name: app_name
+          description: ""
+        - name: transaction_id
+          description: ""
+        - name: customer_id
+          description: ""
+        - name: invoice_number
+          description: ""
+        - name: date
+          description: ""
+        - name: type
+          description: ""
+        - name: payment_method
+          description: ""
+        - name: amount
+          description: ""
+        - name: status
+          description: ""
+        - name: error_text
+          description: ""
+        - name: gateway
+          description: ""
+        - name: card_type
+          description: ""
+        - name: customer_email
+          description: ""
+        - name: currency
+          description: ""
+        - name: amount_unused
+          description: ""
+        - name: amount_capturable
+          description: ""
+        - name: gateway_account_id
+          description: ""
+        - name: acc
+          description: ""
+
+    - name: clicks_able
+      columns:
+        - name: doc_id
+          description: ""
+        - name: ad_campaign_id
+          description: ""
+        - name: ad_channel
+          description: ""
+        - name: ad_custom1
+          description: ""
+        - name: ad_set_id
+          description: ""
+        - name: country
+          description: ""
+        - name: gb
+          description: ""
+        - name: gclid
+          description: ""
+        - name: redirected_at
+          description: ""
+        - name: user_agent
+          description: ""
+
+    - name: clicks_able_temp
+      columns:
+        - name: doc_id
+          description: ""
+        - name: ad_campaign_id
+          description: ""
+        - name: ad_channel
+          description: ""
+        - name: ad_custom1
+          description: ""
+        - name: ad_set_id
+          description: ""
+        - name: country
+          description: ""
+        - name: gb
+          description: ""
+        - name: gclid
+          description: ""
+        - name: redirected_at
+          description: ""
+        - name: user_agent
+          description: ""
+
+    - name: clicks_hint
+      columns:
+        - name: doc_id
+          description: ""
+        - name: ad_campaign
+          description: ""
+        - name: ad_campaign_id
+          description: ""
+        - name: ad_channel
+          description: ""
+        - name: ad_id
+          description: ""
+        - name: ad_name
+          description: ""
+        - name: ad_set
+          description: ""
+        - name: ad_set_id
+          description: ""
+        - name: country
+          description: ""
+        - name: fbclid
+          description: ""
+        - name: redirected_at
+          description: ""
+        - name: user_agent
+          description: ""
+        - name: ad_custom
+          description: ""
+
+    - name: clicks_hint_temp
+      columns:
+        - name: doc_id
+          description: ""
+        - name: ad_campaign
+          description: ""
+        - name: ad_campaign_id
+          description: ""
+        - name: ad_channel
+          description: ""
+        - name: ad_id
+          description: ""
+        - name: ad_name
+          description: ""
+        - name: ad_set
+          description: ""
+        - name: ad_set_id
+          description: ""
+        - name: country
+          description: ""
+        - name: fbclid
+          description: ""
+        - name: redirected_at
+          description: ""
+        - name: user_agent
+          description: ""
+        - name: ad_custom
+          description: ""
+
+    - name: mparticle_able_raw
+      columns:
+        - name: event_timestamp
+          description: ""
+        - name: events_data_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_event_id
+          description: ""
+        - name: events_data_source_message_id
+          description: ""
+        - name: events_data_session_id
+          description: ""
+        - name: events_data_session_uuid
+          description: ""
+        - name: events_data_session_start_unixtime_ms
+          description: ""
+        - name: events_data_device_current_state_time_since_start_ms
+          description: ""
+        - name: events_data_device_current_state_battery_level
+          description: ""
+        - name: events_data_device_current_state_data_connection_type
+          description: ""
+        - name: events_data_device_current_state_data_connection_type_detail
+          description: ""
+        - name: events_data_device_current_state_total_system_memory_usage_bytes
+          description: ""
+        - name: events_data_device_current_state_disk_space_free_bytes
+          description: ""
+        - name: events_data_device_current_state_external_disk_space_free_bytes
+          description: ""
+        - name: events_data_device_current_state_system_memory_available_bytes
+          description: ""
+        - name: events_data_device_current_state_system_memory_low
+          description: ""
+        - name: events_data_device_current_state_system_memory_threshold_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_available_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_max_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_total_bytes
+          description: ""
+        - name: events_data_device_current_state_device_orientation
+          description: ""
+        - name: events_data_canonical_name
+          description: ""
+        - name: events_event_type
+          description: ""
+        - name: mpid
+          description: ""
+        - name: timestamp_unixtime_ms
+          description: ""
+        - name: batch_id
+          description: ""
+        - name: message_id
+          description: ""
+        - name: source_request_id
+          description: ""
+        - name: schema_version
+          description: ""
+        - name: device_info_brand
+          description: ""
+        - name: device_info_product
+          description: ""
+        - name: device_info_device
+          description: ""
+        - name: device_info_android_uuid
+          description: ""
+        - name: device_info_device_manufacturer
+          description: ""
+        - name: device_info_platform
+          description: ""
+        - name: device_info_os_version
+          description: ""
+        - name: device_info_device_model
+          description: ""
+        - name: device_info_screen_height
+          description: ""
+        - name: device_info_screen_width
+          description: ""
+        - name: device_info_screen_dpi
+          description: ""
+        - name: device_info_device_country
+          description: ""
+        - name: device_info_locale_language
+          description: ""
+        - name: device_info_locale_country
+          description: ""
+        - name: device_info_network_country
+          description: ""
+        - name: device_info_network_carrier
+          description: ""
+        - name: device_info_timezone_offset
+          description: ""
+        - name: device_info_build_identifier
+          description: ""
+        - name: device_info_http_header_user_agent
+          description: ""
+        - name: device_info_is_tablet
+          description: ""
+        - name: device_info_push_notification_sound_enabled
+          description: ""
+        - name: device_info_push_notification_vibrate_enabled
+          description: ""
+        - name: device_info_supports_telephony
+          description: ""
+        - name: device_info_has_nfc
+          description: ""
+        - name: device_info_bluetooth_enabled
+          description: ""
+        - name: device_info_bluetooth_version
+          description: ""
+        - name: device_info_android_advertising_id
+          description: ""
+        - name: device_info_build_version_release
+          description: ""
+        - name: device_info_is_dst
+          description: ""
+        - name: application_info_application_name
+          description: ""
+        - name: application_info_application_version
+          description: ""
+        - name: application_info_application_build_number
+          description: ""
+        - name: application_info_install_referrer
+          description: ""
+        - name: application_info_package
+          description: ""
+        - name: application_info_os
+          description: ""
+        - name: user_attributes_goaldifference
+          description: ""
+        - name: user_attributes_reserved_platform
+          description: ""
+        - name: source_info_channel
+          description: ""
+        - name: ip
+          description: ""
+        - name: environment
+          description: ""
+        - name: message_type
+          description: ""
+        - name: device_info_network_code
+          description: ""
+        - name: device_info_network_mobile_country_code
+          description: ""
+        - name: device_info_limit_ad_tracking
+          description: ""
+        - name: user_attributes_reserved_gender
+          description: ""
+        - name: user_attributes_reserved_lastname
+          description: ""
+        - name: user_attributes_unitheight
+          description: ""
+        - name: user_attributes_activity
+          description: ""
+        - name: user_attributes_advertisingid
+          description: ""
+        - name: user_attributes_age
+          description: ""
+        - name: user_attributes_bmi
+          description: ""
+        - name: user_attributes_breastfeeding
+          description: ""
+        - name: user_attributes_caloriebudget
+          description: ""
+        - name: user_attributes_chargebeeid
+          description: ""
+        - name: user_attributes_goal
+          description: ""
+        - name: user_attributes_height
+          description: ""
+        - name: user_attributes_unit
+          description: ""
+        - name: user_attributes_unitweight
+          description: ""
+        - name: user_attributes_weightcurrent
+          description: ""
+        - name: user_attributes_weightgoal
+          description: ""
+        - name: user_attributes_weightgoaldifference
+          description: ""
+        - name: user_attributes_weightlossspeed
+          description: ""
+        - name: user_identities_0_identity_type
+          description: ""
+        - name: user_identities_0_identity
+          description: ""
+        - name: user_identities_0_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_event_start_unixtime_ms
+          description: ""
+        - name: user_attributes_reserved_firstname
+          description: ""
+        - name: events_data_event_name
+          description: ""
+        - name: events_data_event_num
+          description: ""
+        - name: events_data_activity_type
+          description: ""
+        - name: events_data_custom_attributes_value
+          description: ""
+        - name: events_data_application_transition_type
+          description: ""
+        - name: events_data_custom_attributes_id
+          description: ""
+        - name: events_data_device_current_state_gps_state
+          description: ""
+        - name: events_data_custom_attributes_source
+          description: ""
+        - name: events_data_custom_attributes_
+          description: ""
+        - name: events_data_custom_attributes_messagetext
+          description: ""
+        - name: user_attributes_reserved_country
+          description: ""
+        - name: user_attributes_revenuecat__ip
+          description: ""
+        - name: user_attributes_revenuecat__adjustid
+          description: ""
+        - name: user_attributes_revenuecat__mediasource
+          description: ""
+        - name: user_attributes_revenuecat_app_user_id
+          description: ""
+        - name: user_attributes_revenuecat_original_app_user_id
+          description: ""
+        - name: user_identities_0_created_this_batch
+          description: ""
+        - name: user_identities_1_identity_type
+          description: ""
+        - name: user_identities_1_identity
+          description: ""
+        - name: user_identities_1_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_device_current_state_cpu
+          description: ""
+        - name: events_data_device_current_state_status_bar_orientation
+          description: ""
+        - name: events_data_view_controller
+          description: ""
+        - name: events_data_is_main_thread
+          description: ""
+        - name: device_info_push_token
+          description: ""
+        - name: device_info_cpu_architecture
+          description: ""
+        - name: device_info_radio_access_technology
+          description: ""
+        - name: device_info_ios_idfv
+          description: ""
+        - name: events_data_custom_attributes_screenname
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_attribution
+          description: ""
+        - name: events_data_custom_attributes_challenge
+          description: ""
+        - name: events_data_custom_attributes_place
+          description: ""
+        - name: events_data_custom_attributes_experimentname
+          description: ""
+        - name: events_data_custom_attributes_variationname
+          description: ""
+        - name: events_data_custom_attributes_experimentid
+          description: ""
+        - name: events_data_custom_attributes_variationid
+          description: ""
+        - name: device_info_ios_advertising_id
+          description: ""
+        - name: events_data_registration_token
+          description: ""
+        - name: events_data_custom_attributes_day
+          description: ""
+        - name: events_data_is_first_run
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_purchase_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_adgroup_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_creativeset_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_creativeset_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_campaign_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_lineitem_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_org_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_conversion_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_conversion_type
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_country_or_region
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_org_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_campaign_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_click_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_adgroup_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword_matchtype
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_lineitem_name
+          description: ""
+        - name: events_data_is_upgrade
+          description: ""
+        - name: user_attributes_revenuecat__adgroup
+          description: ""
+        - name: user_attributes_revenuecat__campaign
+          description: ""
+        - name: user_attributes_revenuecat__creative
+          description: ""
+        - name: events_data_launch_referral
+          description: ""
+        - name: events_data_custom_attributes_slide
+          description: ""
+
+    - name: mparticle_hint_android_events
+      columns:
+        - name: event_date
+          description: ""
+        - name: events__event_type
+          description: ""
+        - name: events__data__successfully_closed
+          description: ""
+        - name: events__data__is_upgrade
+          description: ""
+        - name: events__data__screen_name
+          description: ""
+        - name: events__data__launch_referral
+          description: ""
+        - name: events__data__event_num
+          description: ""
+        - name: events__data__event_start_unixtime_ms
+          description: ""
+        - name: events__data__activity_type
+          description: ""
+        - name: events__data__canonical_name
+          description: ""
+        - name: events__data__event_name
+          description: ""
+        - name: events__data__session_start_unixtime_ms
+          description: ""
+        - name: events__data__session_uuid
+          description: ""
+        - name: events__data__session_duration_ms
+          description: ""
+        - name: events__data__event_id
+          description: ""
+        - name: events__data__session_id
+          description: ""
+        - name: events__data__source_message_id
+          description: ""
+        - name: events__data__device_current_state__data_connection_type_detail
+          description: ""
+        - name: events__data__device_current_state__gps_state
+          description: ""
+        - name: events__data__device_current_state__device_orientation
+          description: ""
+        - name: events__data__device_current_state__application_memory_max_bytes
+          description: ""
+        - name: events__data__device_current_state__system_memory_threshold_bytes
+          description: ""
+        - name: events__data__device_current_state__application_memory_available_bytes
+          description: ""
+        - name: events__data__device_current_state__system_memory_low
+          description: ""
+        - name: events__data__device_current_state__system_memory_available_bytes
+          description: ""
+        - name: events__data__device_current_state__external_disk_space_free_bytes
+          description: ""
+        - name: events__data__device_current_state__disk_space_free_bytes
+          description: ""
+        - name: events__data__device_current_state__data_connection_type
+          description: ""
+        - name: events__data__device_current_state__application_memory_total_bytes
+          description: ""
+        - name: events__data__device_current_state__battery_level
+          description: ""
+        - name: events__data__device_current_state__total_system_memory_usage_bytes
+          description: ""
+        - name: events__data__device_current_state__time_since_start_ms
+          description: ""
+        - name: events__data__is_first_run
+          description: ""
+        - name: events__data__custom_attributes__params
+          description: ""
+        - name: events__data__custom_attributes__aspect
+          description: ""
+        - name: events__data__custom_attributes__aspectsamount
+          description: ""
+        - name: events__data__custom_attributes__messagetext
+          description: ""
+        - name: events__data__custom_attributes__id
+          description: ""
+        - name: events__data__custom_attributes__week
+          description: ""
+        - name: events__data__custom_attributes__tomorrow
+          description: ""
+        - name: events__data__custom_attributes__today
+          description: ""
+        - name: events__data__custom_attributes__month
+          description: ""
+        - name: events__data__custom_attributes__compatibilitysign
+          description: ""
+        - name: events__data__custom_attributes__val
+          description: ""
+        - name: events__data__custom_attributes__result
+          description: ""
+        - name: events__data__custom_attributes__source
+          description: ""
+        - name: events__data__custom_attributes__revenuecat
+          description: ""
+        - name: events__data__custom_attributes__age
+          description: ""
+        - name: events__data__custom_attributes__signtwo
+          description: ""
+        - name: events__data__custom_attributes__optimizely
+          description: ""
+        - name: events__data__custom_attributes__transitname
+          description: ""
+        - name: events__data__custom_attributes__planet
+          description: ""
+        - name: events__data__custom_attributes__lokalizekey
+          description: ""
+        - name: events__data__custom_attributes__mparticle
+          description: ""
+        - name: events__data__custom_attributes__usercancelled
+          description: ""
+        - name: events__data__custom_attributes__gender
+          description: ""
+        - name: events__data__custom_attributes__sign
+          description: ""
+        - name: events__data__custom_attributes__productid
+          description: ""
+        - name: events__data__custom_attributes__transitsnumber
+          description: ""
+        - name: events__data__custom_attributes__exacttime
+          description: ""
+        - name: events__data__custom_attributes__screenname
+          description: ""
+        - name: events__data__custom_attributes__lokalise
+          description: ""
+        - name: events__data__custom_attributes__page
+          description: ""
+        - name: events__data__custom_attributes__reference
+          description: ""
+        - name: events__data__custom_attributes__signone
+          description: ""
+        - name: events__data__custom_attributes__errorcode
+          description: ""
+        - name: events__data__custom_attributes__relationship
+          description: ""
+        - name: events__data__timestamp_unixtime_ms
+          description: ""
+        - name: events__data__custom_event_type
+          description: ""
+        - name: events__data__application_transition_type
+          description: ""
+        - name: events__data__custom_flags
+          description: ""
+        - name: events__data__custom_attributes
+          description: ""
+        - name: user_attributes__revenuecat_app_user_id
+          description: ""
+        - name: user_attributes__revenuecat_ip
+          description: ""
+        - name: user_attributes__partnerplaceofbirthlon
+          description: ""
+        - name: user_attributes__partnerplaceofbirthlat
+          description: ""
+        - name: user_attributes__partnerdateofbirthgmt
+          description: ""
+        - name: user_attributes__partnercity
+          description: ""
+        - name: user_attributes__partneraddress
+          description: ""
+        - name: user_attributes__revenuecat_adjustid
+          description: ""
+        - name: user_attributes__partnerdateofbirth
+          description: ""
+        - name: user_attributes__conflictpartner
+          description: ""
+        - name: user_attributes__language
+          description: ""
+        - name: user_attributes__communicatepartner
+          description: ""
+        - name: user_attributes__affectingrelationship
+          description: ""
+        - name: user_attributes__userplaceofbirthlon
+          description: ""
+        - name: user_attributes__reserved_platform
+          description: ""
+        - name: user_attributes__communicatepeople
+          description: ""
+        - name: user_attributes__userplaceofbirthlat
+          description: ""
+        - name: user_attributes__userdateofbirthgmt
+          description: ""
+        - name: user_attributes__userdateofbirth
+          description: ""
+        - name: user_attributes__revenuecat_aliases
+          description: ""
+        - name: user_attributes__partnerstate
+          description: ""
+        - name: user_attributes__sensitivecriticism
+          description: ""
+        - name: user_attributes__userzodiacsign
+          description: ""
+        - name: user_attributes__noticewrongright
+          description: ""
+        - name: user_attributes__revenuecat_campaign
+          description: ""
+        - name: user_attributes__headorheart
+          description: ""
+        - name: user_attributes__parent
+          description: ""
+        - name: user_attributes__comesastrology
+          description: ""
+        - name: user_attributes__advertisingid
+          description: ""
+        - name: user_attributes__reserved_zip
+          description: ""
+        - name: user_attributes__reserved_country
+          description: ""
+        - name: user_attributes__reserved_lastname
+          description: ""
+        - name: user_attributes__goal
+          description: ""
+        - name: user_attributes__reserved_state
+          description: ""
+        - name: user_attributes__reserved_gender
+          description: ""
+        - name: user_attributes__userrelationshipstatus
+          description: ""
+        - name: user_attributes__reserved_firstname
+          description: ""
+        - name: user_attributes__merchantaccountcountry
+          description: ""
+        - name: user_attributes__total_spend
+          description: ""
+        - name: user_attributes__reserved_city
+          description: ""
+        - name: user_attributes__reserved_age
+          description: ""
+        - name: user_attributes__chargebeeid
+          description: ""
+        - name: user_attributes__partnerzip
+          description: ""
+        - name: user_attributes__revenuecat_original_app_user_id
+          description: ""
+        - name: user_attributes__reserved_address
+          description: ""
+        - name: device_info__network_mobile_country_code
+          description: ""
+        - name: device_info__limit_ad_tracking
+          description: ""
+        - name: device_info__build_version_release
+          description: ""
+        - name: device_info__android_advertising_id
+          description: ""
+        - name: device_info__network_code
+          description: ""
+        - name: device_info__is_dst
+          description: ""
+        - name: device_info__bluetooth_version
+          description: ""
+        - name: device_info__bluetooth_enabled
+          description: ""
+        - name: device_info__has_nfc
+          description: ""
+        - name: device_info__is_tablet
+          description: ""
+        - name: device_info__push_notification_vibrate_enabled
+          description: ""
+        - name: device_info__push_notification_sound_enabled
+          description: ""
+        - name: device_info__screen_dpi
+          description: ""
+        - name: device_info__timezone_offset
+          description: ""
+        - name: device_info__device_manufacturer
+          description: ""
+        - name: device_info__http_header_user_agent
+          description: ""
+        - name: device_info__android_uuid
+          description: ""
+        - name: device_info__build_identifier
+          description: ""
+        - name: device_info__network_country
+          description: ""
+        - name: device_info__locale_country
+          description: ""
+        - name: device_info__os_version
+          description: ""
+        - name: device_info__locale_language
+          description: ""
+        - name: device_info__device_country
+          description: ""
+        - name: device_info__device_model
+          description: ""
+        - name: device_info__platform
+          description: ""
+        - name: device_info__product
+          description: ""
+        - name: device_info__screen_width
+          description: ""
+        - name: device_info__screen_height
+          description: ""
+        - name: device_info__network_carrier
+          description: ""
+        - name: device_info__supports_telephony
+          description: ""
+        - name: device_info__brand
+          description: ""
+        - name: device_info__device
+          description: ""
+        - name: environment
+          description: ""
+        - name: ip
+          description: ""
+        - name: mp_deviceid
+          description: ""
+        - name: message_type
+          description: ""
+        - name: system_notifications
+          description: ""
+        - name: context
+          description: ""
+        - name: source_request_id
+          description: ""
+        - name: timestamp_unixtime_ms
+          description: ""
+        - name: message_id
+          description: ""
+        - name: batch_id
+          description: ""
+        - name: source_info__channel
+          description: ""
+        - name: schema_version
+          description: ""
+        - name: mpid
+          description: ""
+        - name: deleted_user_attributes
+          description: ""
+        - name: application_info__os
+          description: ""
+        - name: application_info__install_referrer
+          description: ""
+        - name: application_info__application_build_number
+          description: ""
+        - name: application_info__application_name
+          description: ""
+        - name: application_info__application_version
+          description: ""
+        - name: application_info__package
+          description: ""
+        - name: user_identities_email
+          description: ""
+        - name: user_identities_email_created_this_batch
+          description: ""
+        - name: user_identities_email_timestamp_unixtime_ms
+          description: ""
+        - name: user_identities_other_id_2
+          description: ""
+        - name: user_identities_other_id_2_created_this_batch
+          description: ""
+        - name: user_identities_other_id_2_timestamp_unixtime_ms
+          description: ""
+        - name: load_ts
+          description: ""
+
+    - name: mparticle_hint_ios_events
+      columns:
+        - name: event_date
+          description: ""
+        - name: events__data__screen_name
+          description: ""
+        - name: events__event_type
+          description: ""
+        - name: events__data__launch_referral
+          description: ""
+        - name: events__data__push_message_behavior
+          description: ""
+        - name: events__data__application_state
+          description: ""
+        - name: events__data__push_notification_payload
+          description: ""
+        - name: events__data__push_message_type
+          description: ""
+        - name: events__data__push_message_token
+          description: ""
+        - name: events__data__successfully_closed
+          description: ""
+        - name: events__data__event_num
+          description: ""
+        - name: events__data__session_start_unixtime_ms
+          description: ""
+        - name: events__data__is_main_thread
+          description: ""
+        - name: events__data__application_transition_type
+          description: ""
+        - name: events__data__network
+          description: ""
+        - name: events__data__session_uuid
+          description: ""
+        - name: events__data__registration_token
+          description: ""
+        - name: events__data__session_duration_ms
+          description: ""
+        - name: events__data__session_id
+          description: ""
+        - name: events__data__event_id
+          description: ""
+        - name: events__data__source_message_id
+          description: ""
+        - name: events__data__event_start_unixtime_ms
+          description: ""
+        - name: events__data__is_upgrade
+          description: ""
+        - name: events__data__event_name
+          description: ""
+        - name: events__data__timestamp_unixtime_ms
+          description: ""
+        - name: events__data__register
+          description: ""
+        - name: events__data__device_current_state__status_bar_orientation
+          description: ""
+        - name: events__data__device_current_state__system_memory_available_bytes
+          description: ""
+        - name: events__data__device_current_state__cpu
+          description: ""
+        - name: events__data__device_current_state__disk_space_free_bytes
+          description: ""
+        - name: events__data__device_current_state__device_orientation
+          description: ""
+        - name: events__data__device_current_state__gps_state
+          description: ""
+        - name: events__data__device_current_state__data_connection_type
+          description: ""
+        - name: events__data__device_current_state__application_memory_total_bytes
+          description: ""
+        - name: events__data__device_current_state__battery_level
+          description: ""
+        - name: events__data__device_current_state__total_system_memory_usage_bytes
+          description: ""
+        - name: events__data__device_current_state__time_since_start_ms
+          description: ""
+        - name: events__data__is_first_run
+          description: ""
+        - name: events__data__custom_attributes__astrologername
+          description: ""
+        - name: events__data__custom_attributes__messageplan
+          description: ""
+        - name: events__data__custom_attributes__messagetext
+          description: ""
+        - name: events__data__custom_attributes__sign_in_prepopulation
+          description: ""
+        - name: events__data__custom_attributes__relationship
+          description: ""
+        - name: events__data__custom_attributes__transitsnumber
+          description: ""
+        - name: events__data__custom_attributes__exacttime
+          description: ""
+        - name: events__data__custom_attributes__usercancelled
+          description: ""
+        - name: events__data__custom_attributes__gender
+          description: ""
+        - name: events__data__custom_attributes__compatibilitysign
+          description: ""
+        - name: events__data__custom_attributes__trialswitcher
+          description: ""
+        - name: events__data__custom_attributes__screen
+          description: ""
+        - name: events__data__custom_attributes__sign
+          description: ""
+        - name: events__data__custom_attributes__messagerating
+          description: ""
+        - name: events__data__custom_attributes__tomorrow
+          description: ""
+        - name: events__data__custom_attributes__today
+          description: ""
+        - name: events__data__custom_attributes__month
+          description: ""
+        - name: events__data__custom_attributes__sign_in_skip
+          description: ""
+        - name: events__data__custom_attributes__place
+          description: ""
+        - name: events__data__custom_attributes__age
+          description: ""
+        - name: events__data__custom_attributes__errorcode
+          description: ""
+        - name: events__data__custom_attributes__reference
+          description: ""
+        - name: events__data__custom_attributes__signtwo
+          description: ""
+        - name: events__data__custom_attributes__productid
+          description: ""
+        - name: events__data__custom_attributes__week
+          description: ""
+        - name: events__data__custom_attributes__signone
+          description: ""
+        - name: events__data__custom_attributes__screenname
+          description: ""
+        - name: events__data__custom_attributes__count
+          description: ""
+        - name: events__data__custom_attributes__planet
+          description: ""
+        - name: events__data__custom_attributes__status
+          description: ""
+        - name: events__data__custom_attributes__result
+          description: ""
+        - name: events__data__custom_attributes__page
+          description: ""
+        - name: events__data__custom_attributes__id
+          description: ""
+        - name: events__data__custom_event_type
+          description: ""
+        - name: events__data__view_controller
+          description: ""
+        - name: events__data__custom_flags
+          description: ""
+        - name: events__data__custom_attributes
+          description: ""
+        - name: user_attributes__partnerplaceofbirthlon
+          description: ""
+        - name: user_attributes__partnercity
+          description: ""
+        - name: user_attributes__partneraddress
+          description: ""
+        - name: user_attributes__partnerzip
+          description: ""
+        - name: user_attributes__partnerstate
+          description: ""
+        - name: user_attributes__conflictpartner
+          description: ""
+        - name: user_attributes__affectingrelationship
+          description: ""
+        - name: user_attributes__userdeeplink
+          description: ""
+        - name: user_attributes__revenuecat_creative
+          description: ""
+        - name: user_attributes__revenuecat_app_user_id
+          description: ""
+        - name: user_attributes__partnerdateofbirthgmt
+          description: ""
+        - name: user_attributes__merchantaccountcountry
+          description: ""
+        - name: user_attributes__revenuecat_mediasource
+          description: ""
+        - name: user_attributes__partnerdateofbirth
+          description: ""
+        - name: user_attributes__revenuecat_adjustid
+          description: ""
+        - name: user_attributes__revenuecat_aliases
+          description: ""
+        - name: user_attributes__revenuecat_ip
+          description: ""
+        - name: user_attributes__sensitivecriticism
+          description: ""
+        - name: user_attributes__comesastrology
+          description: ""
+        - name: user_attributes__reserved_country
+          description: ""
+        - name: user_attributes__advertisingid
+          description: ""
+        - name: user_attributes__revenuecat_adgroup
+          description: ""
+        - name: user_attributes__reserved_gender
+          description: ""
+        - name: user_attributes__reserved_state
+          description: ""
+        - name: user_attributes__chargebeeid
+          description: ""
+        - name: user_attributes__revenuecat_original_app_user_id
+          description: ""
+        - name: user_attributes__reserved_address
+          description: ""
+        - name: user_attributes__userdateofbirthgmt
+          description: ""
+        - name: user_attributes__reserved_zip
+          description: ""
+        - name: user_attributes__reserved_lastname
+          description: ""
+        - name: user_attributes__userhandheartlinetype
+          description: ""
+        - name: user_attributes__reserved_city
+          description: ""
+        - name: user_attributes__reserved_firstname
+          description: ""
+        - name: user_attributes__userrelationshipstatus
+          description: ""
+        - name: user_attributes__partnerplaceofbirthlat
+          description: ""
+        - name: user_attributes__revenuecat_campaign
+          description: ""
+        - name: user_attributes__communicatepartner
+          description: ""
+        - name: user_attributes__headorheart
+          description: ""
+        - name: user_attributes__userzodiacsign
+          description: ""
+        - name: user_attributes__userhandshapetype
+          description: ""
+        - name: user_attributes__reserved_age
+          description: ""
+        - name: user_attributes__goal
+          description: ""
+        - name: user_attributes__userhandheadlinetype
+          description: ""
+        - name: user_attributes__language
+          description: ""
+        - name: user_attributes__communicatepeople
+          description: ""
+        - name: user_attributes__userplaceofbirthlat
+          description: ""
+        - name: user_attributes__noticewrongright
+          description: ""
+        - name: user_attributes__parent
+          description: ""
+        - name: user_attributes__userhandlifelinetype
+          description: ""
+        - name: user_attributes__total_spend
+          description: ""
+        - name: user_attributes__userplaceofbirthlon
+          description: ""
+        - name: user_attributes__userdateofbirth
+          description: ""
+        - name: device_info__limit_ad_tracking
+          description: ""
+        - name: device_info__push_token
+          description: ""
+        - name: device_info__ios_idfv
+          description: ""
+        - name: device_info__is_tablet
+          description: ""
+        - name: device_info__brand
+          description: ""
+        - name: device_info__cpu_architecture
+          description: ""
+        - name: device_info__radio_access_technology
+          description: ""
+        - name: device_info__ios_advertising_id
+          description: ""
+        - name: device_info__timezone_offset
+          description: ""
+        - name: device_info__device_manufacturer
+          description: ""
+        - name: device_info__http_header_user_agent
+          description: ""
+        - name: device_info__build_identifier
+          description: ""
+        - name: device_info__network_country
+          description: ""
+        - name: device_info__locale_country
+          description: ""
+        - name: device_info__platform
+          description: ""
+        - name: device_info__device_model
+          description: ""
+        - name: device_info__product
+          description: ""
+        - name: device_info__screen_width
+          description: ""
+        - name: device_info__locale_language
+          description: ""
+        - name: device_info__os_version
+          description: ""
+        - name: device_info__screen_height
+          description: ""
+        - name: device_info__network_mobile_country_code
+          description: ""
+        - name: device_info__is_dst
+          description: ""
+        - name: device_info__network_code
+          description: ""
+        - name: device_info__device
+          description: ""
+        - name: device_info__network_carrier
+          description: ""
+        - name: batch_id
+          description: ""
+        - name: source_info__channel
+          description: ""
+        - name: schema_version
+          description: ""
+        - name: mpid
+          description: ""
+        - name: timestamp_unixtime_ms
+          description: ""
+        - name: message_id
+          description: ""
+        - name: environment
+          description: ""
+        - name: ip
+          description: ""
+        - name: message_type
+          description: ""
+        - name: system_notifications
+          description: ""
+        - name: context
+          description: ""
+        - name: source_request_id
+          description: ""
+        - name: attribution_info__campaign
+          description: ""
+        - name: attribution_info__publisher
+          description: ""
+        - name: attribution_info__service_provider
+          description: ""
+        - name: deleted_user_attributes
+          description: ""
+        - name: application_info__apple_search_ads_attributes__version3_1__iad_attribution
+          description: ""
+        - name: application_info__os
+          description: ""
+        - name: application_info__application_build_number
+          description: ""
+        - name: application_info__application_name
+          description: ""
+        - name: application_info__application_version
+          description: ""
+        - name: application_info__package
+          description: ""
+        - name: user_identities_email
+          description: ""
+        - name: user_identities_email_created_this_batch
+          description: ""
+        - name: user_identities_email_timestamp_unixtime_ms
+          description: ""
+        - name: user_identities_other_id_2
+          description: ""
+        - name: user_identities_other_id_2_created_this_batch
+          description: ""
+        - name: user_identities_other_id_2_timestamp_unixtime_ms
+          description: ""
+        - name: load_ts
+          description: ""
+
+    - name: mparticle_hint_raw
+      columns:
+        - name: event_timestamp
+          description: ""
+        - name: events_data_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_event_id
+          description: ""
+        - name: events_data_source_message_id
+          description: ""
+        - name: events_data_session_id
+          description: ""
+        - name: events_data_session_uuid
+          description: ""
+        - name: events_data_session_start_unixtime_ms
+          description: ""
+        - name: events_data_device_current_state_time_since_start_ms
+          description: ""
+        - name: events_data_device_current_state_battery_level
+          description: ""
+        - name: events_data_device_current_state_data_connection_type
+          description: ""
+        - name: events_data_device_current_state_data_connection_type_detail
+          description: ""
+        - name: events_data_device_current_state_total_system_memory_usage_bytes
+          description: ""
+        - name: events_data_device_current_state_disk_space_free_bytes
+          description: ""
+        - name: events_data_device_current_state_external_disk_space_free_bytes
+          description: ""
+        - name: events_data_device_current_state_system_memory_available_bytes
+          description: ""
+        - name: events_data_device_current_state_system_memory_low
+          description: ""
+        - name: events_data_device_current_state_system_memory_threshold_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_available_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_max_bytes
+          description: ""
+        - name: events_data_device_current_state_application_memory_total_bytes
+          description: ""
+        - name: events_data_device_current_state_device_orientation
+          description: ""
+        - name: events_data_canonical_name
+          description: ""
+        - name: events_event_type
+          description: ""
+        - name: mpid
+          description: ""
+        - name: timestamp_unixtime_ms
+          description: ""
+        - name: batch_id
+          description: ""
+        - name: message_id
+          description: ""
+        - name: source_request_id
+          description: ""
+        - name: schema_version
+          description: ""
+        - name: device_info_brand
+          description: ""
+        - name: device_info_product
+          description: ""
+        - name: device_info_device
+          description: ""
+        - name: device_info_android_uuid
+          description: ""
+        - name: device_info_device_manufacturer
+          description: ""
+        - name: device_info_platform
+          description: ""
+        - name: device_info_os_version
+          description: ""
+        - name: device_info_device_model
+          description: ""
+        - name: device_info_screen_height
+          description: ""
+        - name: device_info_screen_width
+          description: ""
+        - name: device_info_screen_dpi
+          description: ""
+        - name: device_info_device_country
+          description: ""
+        - name: device_info_locale_language
+          description: ""
+        - name: device_info_locale_country
+          description: ""
+        - name: device_info_network_country
+          description: ""
+        - name: device_info_network_carrier
+          description: ""
+        - name: device_info_timezone_offset
+          description: ""
+        - name: device_info_build_identifier
+          description: ""
+        - name: device_info_http_header_user_agent
+          description: ""
+        - name: device_info_is_tablet
+          description: ""
+        - name: device_info_push_notification_sound_enabled
+          description: ""
+        - name: device_info_push_notification_vibrate_enabled
+          description: ""
+        - name: device_info_supports_telephony
+          description: ""
+        - name: device_info_has_nfc
+          description: ""
+        - name: device_info_bluetooth_enabled
+          description: ""
+        - name: device_info_bluetooth_version
+          description: ""
+        - name: device_info_android_advertising_id
+          description: ""
+        - name: device_info_build_version_release
+          description: ""
+        - name: device_info_is_dst
+          description: ""
+        - name: application_info_application_name
+          description: ""
+        - name: application_info_application_version
+          description: ""
+        - name: application_info_application_build_number
+          description: ""
+        - name: application_info_install_referrer
+          description: ""
+        - name: application_info_package
+          description: ""
+        - name: application_info_os
+          description: ""
+        - name: user_attributes_reserved_platform
+          description: ""
+        - name: source_info_channel
+          description: ""
+        - name: ip
+          description: ""
+        - name: environment
+          description: ""
+        - name: message_type
+          description: ""
+        - name: device_info_network_code
+          description: ""
+        - name: device_info_network_mobile_country_code
+          description: ""
+        - name: device_info_limit_ad_tracking
+          description: ""
+        - name: user_attributes_reserved_gender
+          description: ""
+        - name: user_attributes_reserved_lastname
+          description: ""
+        - name: user_attributes_advertisingid
+          description: ""
+        - name: user_attributes_chargebeeid
+          description: ""
+        - name: user_attributes_goal
+          description: ""
+        - name: user_identities_0_identity_type
+          description: ""
+        - name: user_identities_0_identity
+          description: ""
+        - name: user_identities_0_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_event_start_unixtime_ms
+          description: ""
+        - name: user_attributes_reserved_firstname
+          description: ""
+        - name: events_data_event_name
+          description: ""
+        - name: events_data_event_num
+          description: ""
+        - name: events_data_activity_type
+          description: ""
+        - name: events_data_application_transition_type
+          description: ""
+        - name: events_data_custom_attributes_id
+          description: ""
+        - name: events_data_device_current_state_gps_state
+          description: ""
+        - name: events_data_custom_attributes_source
+          description: ""
+        - name: events_data_custom_attributes_messagetext
+          description: ""
+        - name: user_attributes_reserved_country
+          description: ""
+        - name: user_attributes_revenuecat__ip
+          description: ""
+        - name: user_attributes_revenuecat__adjustid
+          description: ""
+        - name: user_attributes_revenuecat__mediasource
+          description: ""
+        - name: user_attributes_revenuecat_app_user_id
+          description: ""
+        - name: user_attributes_revenuecat_original_app_user_id
+          description: ""
+        - name: user_identities_0_created_this_batch
+          description: ""
+        - name: user_identities_1_identity_type
+          description: ""
+        - name: user_identities_1_identity
+          description: ""
+        - name: user_identities_1_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_device_current_state_cpu
+          description: ""
+        - name: events_data_device_current_state_status_bar_orientation
+          description: ""
+        - name: events_data_view_controller
+          description: ""
+        - name: events_data_is_main_thread
+          description: ""
+        - name: device_info_push_token
+          description: ""
+        - name: device_info_cpu_architecture
+          description: ""
+        - name: device_info_radio_access_technology
+          description: ""
+        - name: device_info_ios_idfv
+          description: ""
+        - name: events_data_custom_attributes_screenname
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_attribution
+          description: ""
+        - name: events_data_custom_attributes_experimentname
+          description: ""
+        - name: events_data_custom_attributes_variationname
+          description: ""
+        - name: events_data_custom_attributes_experimentid
+          description: ""
+        - name: events_data_custom_attributes_variationid
+          description: ""
+        - name: device_info_ios_advertising_id
+          description: ""
+        - name: events_data_registration_token
+          description: ""
+        - name: events_data_is_first_run
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_purchase_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_adgroup_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_creativeset_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_creativeset_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_campaign_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_lineitem_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_org_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_conversion_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword_id
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_conversion_type
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_country_or_region
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_org_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_campaign_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_click_date
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_adgroup_name
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_keyword_matchtype
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_lineitem_name
+          description: ""
+        - name: events_data_is_upgrade
+          description: ""
+        - name: user_attributes_revenuecat__adgroup
+          description: ""
+        - name: user_attributes_revenuecat__campaign
+          description: ""
+        - name: user_attributes_revenuecat__creative
+          description: ""
+        - name: events_data_launch_referral
+          description: ""
+        - name: user_identities_3_identity
+          description: ""
+        - name: user_attributes_partnerdateofbirthgmt
+          description: ""
+        - name: user_attributes_reserved_city
+          description: ""
+        - name: user_identities_3_identity_type
+          description: ""
+        - name: events_data_custom_attributes_revenuecat
+          description: ""
+        - name: events_data_custom_attributes_tutorialname
+          description: ""
+        - name: user_attributes_userdateofbirth
+          description: ""
+        - name: user_attributes_userplaceofbirthlat
+          description: ""
+        - name: events_data_custom_attributes_ideaname
+          description: ""
+        - name: events_data_custom_attributes_optimizely
+          description: ""
+        - name: events_data_custom_attributes_sign_in_prepopulation
+          description: ""
+        - name: user_attributes_userrelationshipstatus
+          description: ""
+        - name: events_data_custom_attributes_age
+          description: ""
+        - name: events_data_custom_attributes_val
+          description: ""
+        - name: events_data_custom_attributes_question
+          description: ""
+        - name: user_attributes_partnercity
+          description: ""
+        - name: user_attributes_partnerzip
+          description: ""
+        - name: events_data_custom_attributes_count
+          description: ""
+        - name: events_data_custom_attributes_sign_in_skip
+          description: ""
+        - name: events_data_custom_attributes_exacttime
+          description: ""
+        - name: events_data_custom_attributes_compatibilitysign
+          description: ""
+        - name: events_data_custom_attributes_place
+          description: ""
+        - name: user_attributes_userlastfreemessage
+          description: ""
+        - name: user_attributes_headorheart
+          description: ""
+        - name: events_data_custom_attributes_gender
+          description: ""
+        - name: user_identities_1_created_this_batch
+          description: ""
+        - name: device_info_fire_advertising_id
+          description: ""
+        - name: user_attributes_reserved_state
+          description: ""
+        - name: events_data_custom_attributes_usercancelled
+          description: ""
+        - name: user_identities_3_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_custom_attributes_contentrating
+          description: ""
+        - name: attribution_info_publisher
+          description: ""
+        - name: user_attributes_communicatepeople
+          description: ""
+        - name: user_attributes_id
+          description: ""
+        - name: user_attributes_reserved_zip
+          description: ""
+        - name: events_data_custom_attributes_questioncount
+          description: ""
+        - name: events_data_custom_attributes_mparticle
+          description: ""
+        - name: user_attributes_affectingrelationship
+          description: ""
+        - name: user_attributes_comesastrology
+          description: ""
+        - name: user_attributes_partnerplaceofbirthlon
+          description: ""
+        - name: user_attributes_revenuecat__idfv
+          description: ""
+        - name: user_attributes_userzodiacsign
+          description: ""
+        - name: events_data_custom_attributes_queryfragment
+          description: ""
+        - name: events_data_custom_attributes_aspect
+          description: ""
+        - name: attribution_info_service_provider
+          description: ""
+        - name: events_data_custom_attributes_screen
+          description: ""
+        - name: user_attributes_conflictpartner
+          description: ""
+        - name: user_attributes_communicatepartner
+          description: ""
+        - name: events_data_custom_attributes_messagerating
+          description: ""
+        - name: events_data_custom_attributes_topicname
+          description: ""
+        - name: user_attributes_userdateofbirthgmt
+          description: ""
+        - name: user_identities_2_timestamp_unixtime_ms
+          description: ""
+        - name: events_data_custom_attributes_tomorrow
+          description: ""
+        - name: user_attributes_partneraddress
+          description: ""
+        - name: events_data_custom_attributes_score
+          description: ""
+        - name: mp_deviceid
+          description: ""
+        - name: user_attributes_reserved_address
+          description: ""
+        - name: user_attributes_revenuecat_revenuecat__idfv
+          description: ""
+        - name: attribution_info_campaign
+          description: ""
+        - name: user_attributes_gender
+          description: ""
+        - name: user_attributes_revenuecat_revenuecat__mparticleid
+          description: ""
+        - name: events_data_custom_attributes_reference
+          description: ""
+        - name: events_data_custom_attributes_month
+          description: ""
+        - name: events_data_custom_attributes_widgetfamily
+          description: ""
+        - name: events_data_network
+          description: ""
+        - name: events_data_application_state
+          description: ""
+        - name: events_data_custom_attributes_trialswitcher
+          description: ""
+        - name: events_data_custom_attributes_relationship
+          description: ""
+        - name: events_data_push_message_behavior
+          description: ""
+        - name: events_data_push_message_type
+          description: ""
+        - name: deleted_user_attributes_3
+          description: ""
+        - name: events_data_custom_attributes_astrologername
+          description: ""
+        - name: user_attributes_abtestflag
+          description: ""
+        - name: user_attributes_language
+          description: ""
+        - name: user_attributes_partnerdateofbirth
+          description: ""
+        - name: events_data_custom_attributes_productid
+          description: ""
+        - name: user_attributes_total_spend
+          description: ""
+        - name: events_data_custom_attributes_lokalizekey
+          description: ""
+        - name: events_data_custom_attributes_transitsnumber
+          description: ""
+        - name: user_attributes_parent
+          description: ""
+        - name: user_attributes_totalspend
+          description: ""
+        - name: user_identities_2_identity_type
+          description: ""
+        - name: deleted_user_attributes_1
+          description: ""
+        - name: user_attributes_mpid
+          description: ""
+        - name: events_data_custom_attributes_scan
+          description: ""
+        - name: user_attributes_revenuecat__lastseenip
+          description: ""
+        - name: events_data_custom_attributes_messageplan
+          description: ""
+        - name: events_data_custom_attributes_result
+          description: ""
+        - name: user_attributes_userdeeplink
+          description: ""
+        - name: events_data_custom_attributes_sign
+          description: ""
+        - name: events_data_custom_attributes_description
+          description: ""
+        - name: events_data_custom_attributes_errorcode
+          description: ""
+        - name: events_data_custom_attributes_lokalisekey
+          description: ""
+        - name: user_attributes_was_removed
+          description: ""
+        - name: events_data_custom_attributes_aspectsamount
+          description: ""
+        - name: events_data_custom_attributes_transitname
+          description: ""
+        - name: events_data_custom_attributes_week
+          description: ""
+        - name: user_identities_2_created_this_batch
+          description: ""
+        - name: user_attributes_userhandheartlinetype
+          description: ""
+        - name: events_data_custom_attributes_page
+          description: ""
+        - name: user_attributes_userhandheadlinetype
+          description: ""
+        - name: events_data_custom_attributes_section
+          description: ""
+        - name: events_data_custom_attributes_signtwo
+          description: ""
+        - name: events_data_custom_attributes_status
+          description: ""
+        - name: events_data_custom_attributes_today
+          description: ""
+        - name: user_attributes_userlastpaidmessage
+          description: ""
+        - name: events_data_custom_attributes_planet
+          description: ""
+        - name: events_data_custom_attributes_scantime
+          description: ""
+        - name: events_data_custom_attributes_signone
+          description: ""
+        - name: user_attributes_partnerplaceofbirthlat
+          description: ""
+        - name: events_data_custom_attributes_method
+          description: ""
+        - name: application_info_apple_search_ads_attributes_version3_1_iad_ad_id
+          description: ""
+        - name: events_data_custom_attributes_lokalise
+          description: ""
+        - name: user_attributes_userhandshapetype
+          description: ""
+        - name: events_data_custom_attributes_feedback
+          description: ""
+        - name: user_attributes_userfreemessages
+          description: ""
+        - name: user_attributes_userplaceofbirthlon
+          description: ""
+        - name: user_identities_2_identity
+          description: ""
+        - name: events_data_custom_attributes_freemessagescount
+          description: ""
+        - name: events_data_custom_attributes_type
+          description: ""
+        - name: deleted_user_attributes_0
+          description: ""
+        - name: user_attributes_merchantaccountcountry
+          description: ""
+        - name: deleted_user_attributes_2
+          description: ""
+        - name: events_data_push_notification_payload
+          description: ""
+        - name: user_attributes_partnerstate
+          description: ""
+        - name: user_attributes_revenuecat__mparticleid
+          description: ""
+        - name: user_attributes_recurlyid
+          description: ""
+        - name: user_attributes_reserved_age
+          description: ""
+        - name: user_attributes_noticewrongright
+          description: ""
+        - name: user_attributes_revenuecat__idfa
+          description: ""
+        - name: user_attributes_sensitivecriticism
+          description: ""
+        - name: user_attributes_userhandlifelinetype
+          description: ""
+
+    - name: mparticle_hint_start_use
+      columns:
+        - name: mpid
+          description: ""
+        - name: start_use
+          description: ""
+
+    - name: revenuecat_able
+      columns:
+        - name: rc_original_app_user_id
+          description: ""
+        - name: rc_last_seen_app_user_id_alias
+          description: ""
+        - name: country
+          description: ""
+        - name: product_identifier
+          description: ""
+        - name: start_time
+          description: ""
+        - name: end_time
+          description: ""
+        - name: store
+          description: ""
+        - name: is_auto_renewable
+          description: ""
+        - name: is_trial_period
+          description: ""
+        - name: is_in_intro_offer_period
+          description: ""
+        - name: is_sandbox
+          description: ""
+        - name: price_in_usd
+          description: ""
+        - name: takehome_percentage
+          description: ""
+        - name: store_transaction_id
+          description: ""
+        - name: original_store_transaction_id
+          description: ""
+        - name: refunded_at
+          description: ""
+        - name: unsubscribe_detected_at
+          description: ""
+        - name: billing_issues_detected_at
+          description: ""
+        - name: purchased_currency
+          description: ""
+        - name: price_in_purchased_currency
+          description: ""
+        - name: entitlement_identifiers
+          description: ""
+        - name: renewal_number
+          description: ""
+        - name: is_trial_conversion
+          description: ""
+        - name: presented_offering
+          description: ""
+        - name: reserved_subscriber_attributes
+          description: ""
+        - name: custom_subscriber_attributes
+          description: ""
+        - name: platform
+          description: ""
+
+    - name: revenuecat_hint
+      columns:
+        - name: rc_original_app_user_id
+          description: ""
+        - name: rc_last_seen_app_user_id_alias
+          description: ""
+        - name: country
+          description: ""
+        - name: product_identifier
+          description: ""
+        - name: start_time
+          description: ""
+        - name: end_time
+          description: ""
+        - name: store
+          description: ""
+        - name: is_auto_renewable
+          description: ""
+        - name: is_trial_period
+          description: ""
+        - name: is_in_intro_offer_period
+          description: ""
+        - name: is_sandbox
+          description: ""
+        - name: price_in_usd
+          description: ""
+        - name: takehome_percentage
+          description: ""
+        - name: store_transaction_id
+          description: ""
+        - name: original_store_transaction_id
+          description: ""
+        - name: refunded_at
+          description: ""
+        - name: unsubscribe_detected_at
+          description: ""
+        - name: billing_issues_detected_at
+          description: ""
+        - name: purchased_currency
+          description: ""
+        - name: price_in_purchased_currency
+          description: ""
+        - name: entitlement_identifiers
+          description: ""
+        - name: renewal_number
+          description: ""
+        - name: is_trial_conversion
+          description: ""
+        - name: presented_offering
+          description: ""
+        - name: reserved_subscriber_attributes
+          description: ""
+        - name: custom_subscriber_attributes
+          description: ""
+        - name: platform
+          description: ""

@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: app_transactions
+    description: ""
+    columns:
+      - name: min_date
+        description: ""
+
+      - name: date
+        description: ""
+
+      - name: end_time
+        description: ""
+
+      - name: subscriber_id
+        description: ""
+
+      - name: app_name
+        description: ""
+
+      - name: platform
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: plan_id
+        description: ""
+
+      - name: currency
+        description: ""
+
+      - name: price
+        description: ""
+
+      - name: proceeds
+        description: ""
+
+      - name: refunded_at
+        description: ""
+
+      - name: is_refunded
+        description: ""
+
+      - name: billing_issues_detected_at
+        description: ""
+
+      - name: is_billing_issue
+        description: ""
+
+      - name: cancelled_at
+        description: ""
+
+      - name: store_transaction_id
+        description: ""
+
+      - name: original_store_transaction_id
+        description: ""
+
+      - name: is_auto_renewable
+        description: ""
+
+      - name: is_trial_period
+        description: ""

@@ -23,11 +23,11 @@ select
     mrr,
     currency,
     subscription_plan_unit_price,
-    subscriptions_setup_fee subscription_setup_fee,
-    subscriptions_pause_date subscription_pause_date,
-    subscriptions_resume_date subscriptions_resume_date,
+    subscription_setup_fee,
+    subscription_pause_date,
+    subscriptions_resume_date,
     subscription_plan_amount,
-    subscriptions_plan_quantity_in_decimal subscription_plan_quantity_in_decimal,
-    subscriptions_plan_unit_price_in_decimal subscription_plan_unit_price_in_decimal,
-    subscriptions_plan_amount_in_decimal subscription_plan_amount_in_decimal
+    subscription_plan_quantity_in_decimal,
+    subscription_plan_unit_price_in_decimal,
+    subscription_plan_amount_in_decimal
 from {{ref('chargebee_subscriptions_view')}}
