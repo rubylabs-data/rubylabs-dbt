@@ -1,0 +1,404 @@
+version: 2
+
+models:
+  - name: app_able
+    description: ""
+    columns:
+      - name: rc_original_app_user_id
+        description: ""
+
+      - name: rc_last_seen_app_user_id_alias
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: product_identifier
+        description: ""
+
+      - name: start_time
+        description: ""
+
+      - name: end_time
+        description: ""
+
+      - name: store
+        description: ""
+
+      - name: is_auto_renewable
+        description: ""
+
+      - name: is_trial_period
+        description: ""
+
+      - name: is_in_intro_offer_period
+        description: ""
+
+      - name: is_sandbox
+        description: ""
+
+      - name: price_in_usd
+        description: ""
+
+      - name: takehome_percentage
+        description: ""
+
+      - name: store_transaction_id
+        description: ""
+
+      - name: original_store_transaction_id
+        description: ""
+
+      - name: refunded_at
+        description: ""
+
+      - name: unsubscribe_detected_at
+        description: ""
+
+      - name: billing_issues_detected_at
+        description: ""
+
+      - name: purchased_currency
+        description: ""
+
+      - name: price_in_purchased_currency
+        description: ""
+
+      - name: entitlement_identifiers
+        description: ""
+
+      - name: renewal_number
+        description: ""
+
+      - name: is_trial_conversion
+        description: ""
+
+      - name: presented_offering
+        description: ""
+
+      - name: reserved_subscriber_attributes
+        description: ""
+
+      - name: custom_subscriber_attributes
+        description: ""
+
+      - name: platform
+        description: ""
+
+  - name: app_hint
+    description: ""
+    columns:
+      - name: rc_original_app_user_id
+        description: ""
+
+      - name: rc_last_seen_app_user_id_alias
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: product_identifier
+        description: ""
+
+      - name: start_time
+        description: ""
+
+      - name: end_time
+        description: ""
+
+      - name: store
+        description: ""
+
+      - name: is_auto_renewable
+        description: ""
+
+      - name: is_trial_period
+        description: ""
+
+      - name: is_in_intro_offer_period
+        description: ""
+
+      - name: is_sandbox
+        description: ""
+
+      - name: price_in_usd
+        description: ""
+
+      - name: takehome_percentage
+        description: ""
+
+      - name: store_transaction_id
+        description: ""
+
+      - name: original_store_transaction_id
+        description: ""
+
+      - name: refunded_at
+        description: ""
+
+      - name: unsubscribe_detected_at
+        description: ""
+
+      - name: billing_issues_detected_at
+        description: ""
+
+      - name: purchased_currency
+        description: ""
+
+      - name: price_in_purchased_currency
+        description: ""
+
+      - name: entitlement_identifiers
+        description: ""
+
+      - name: renewal_number
+        description: ""
+
+      - name: is_trial_conversion
+        description: ""
+
+      - name: presented_offering
+        description: ""
+
+      - name: reserved_subscriber_attributes
+        description: ""
+
+      - name: custom_subscriber_attributes
+        description: ""
+
+      - name: platform
+        description: ""
+
+  - name: web_customers
+    description: ""
+    columns:
+      - name: app_name
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: auto_collection
+        description: ""
+
+      - name: card_status
+        description: ""
+
+      - name: customer_portal_status
+        description: ""
+
+  - name: web_invoices
+    description: ""
+    columns:
+      - name: app_name
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: subscription_id
+        description: ""
+
+      - name: invoice_date
+        description: ""
+
+      - name: start_date
+        description: ""
+
+      - name: paid_on
+        description: ""
+
+      - name: amount
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: next_retry
+        description: ""
+
+      - name: refunded_amount
+        description: ""
+
+      - name: recurring
+        description: ""
+
+      - name: first_invoice
+        description: ""
+
+      - name: amount_due
+        description: ""
+
+      - name: adjustments
+        description: ""
+
+      - name: credits_applied
+        description: ""
+
+      - name: payments
+        description: ""
+
+      - name: write_off_amount
+        description: ""
+
+      - name: currency
+        description: ""
+
+      - name: net_term_days
+        description: ""
+
+      - name: due_date
+        description: ""
+
+      - name: voided_at
+        description: ""
+
+      - name: invoice_number
+        description: ""
+
+      - name: dunning_status
+        description: ""
+
+  - name: web_subscriptions
+    description: ""
+    columns:
+      - name: app_name
+        description: ""
+
+      - name: subscription_id
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: plan_id
+        description: ""
+
+      - name: plan_quantity
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: start_date
+        description: ""
+
+      - name: trial_start
+        description: ""
+
+      - name: trial_end
+        description: ""
+
+      - name: curr_term_start
+        description: ""
+
+      - name: curr_term_end
+        description: ""
+
+      - name: next_billing
+        description: ""
+
+      - name: remaining_billing_cycles
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: started_at
+        description: ""
+
+      - name: activated_at
+        description: ""
+
+      - name: cancelled_at
+        description: ""
+
+      - name: next_billing_amount
+        description: ""
+
+      - name: mrr
+        description: ""
+
+      - name: currency
+        description: ""
+
+      - name: subscription_plan_unit_price
+        description: ""
+
+      - name: subscription_setup_fee
+        description: ""
+
+      - name: subscription_pause_date
+        description: ""
+
+      - name: subscriptions_resume_date
+        description: ""
+
+      - name: subscription_plan_amount
+        description: ""
+
+      - name: subscription_plan_quantity_in_decimal
+        description: ""
+
+      - name: subscription_plan_unit_price_in_decimal
+        description: ""
+
+      - name: subscription_plan_amount_in_decimal
+        description: ""
+
+  - name: web_transactions
+    description: ""
+    columns:
+      - name: app_name
+        description: ""
+
+      - name: transaction_id
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: invoice_number
+        description: ""
+
+      - name: date
+        description: ""
+
+      - name: type
+        description: ""
+
+      - name: payment_method
+        description: ""
+
+      - name: amount
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: error_text
+        description: ""
+
+      - name: gateway
+        description: ""
+
+      - name: card_type
+        description: ""
+
+      - name: currency
+        description: ""
+
+      - name: amount_unused
+        description: ""
+
+      - name: amount_capturable
+        description: ""
