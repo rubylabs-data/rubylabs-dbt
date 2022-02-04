@@ -6,15 +6,18 @@ sources:
     schema: dwh_v2
     tables:
     - name: chargebee_customers
+      description: "details about chargebee customers, one email address can
+                    have many customer_ids, therefore a customer_id a representation
+                    of a unique customer, email is better"
       columns:
         - name: event_date
-          description: ""
+          description: "never null, not sure what event this relates to"
         - name: site
           description: ""
         - name: customer_id
-          description: ""
+          description: "never null, unique"
         - name: email
-          description: ""
+          description: "never null, not unique"
         - name: first_name
           description: ""
         - name: last_name
@@ -34,17 +37,19 @@ sources:
         - name: billing_address_state
           description: ""
         - name: billing_address_country
-          description: ""
+          description: "The billing address country of the customer. Must be one of ISO 3166 alpha-2 country code."
         - name: billing_address_zip
           description: ""
         - name: auto_collection
-          description: ""
+          description: "Defines whether payments need to be collected automatically for this subscription. 
+            Overrides customer's auto-collection property.
+            Possible values on or off. It's very rarely off"
         - name: offline_payment_method
           description: ""
         - name: card_status
-          description: ""
+          description: "Can have values of null, Valid, Expired, Expiring and Pending Verification. null and Pending Verification are rare"
         - name: created_at
-          description: ""
+          description: "The time at which the customer was created. optional, timestamp(UTC) in seconds"
         - name: mparticleid
           description: ""
         - name: advertisingid
@@ -58,11 +63,11 @@ sources:
         - name: customer_portal_status
           description: ""
         - name: net_term_days
-          description: ""
+          description: "always zero"
         - name: taxability
-          description: ""
+          description: "always Taxable"
         - name: locale
-          description: ""
+          description: "almost always null"
         - name: billing_address_first_name
           description: ""
         - name: billing_address_last_name
@@ -86,13 +91,13 @@ sources:
         - name: vat_number_prefix
           description: ""
         - name: parent
-          description: ""
+          description: "always null"
         - name: payment_owner
           description: ""
         - name: invoice_owner
           description: ""
         - name: auto_close_invoice
-          description: ""
+          description: "always null"
         - name: load_ts
           description: ""
         - name: update_ts
@@ -278,41 +283,59 @@ sources:
           description: ""
 
     - name: chargebee_invoices
+      description: "details about chargebee invoices, seems to have up to
+                    four records per invoice_number so seems like state change
+                    table. customer_id and customer_email are never null"
       columns:
         - name: event_date
           description: ""
         - name: site
           description: ""
         - name: customer_id
-          description: ""
+          description: "never null"
         - name: subscription_id
-          description: ""
+          description: "can be null, probably where invoicing without a sub?"
         - name: invoice_number
           description: ""
         - name: invoice_date
-          description: ""
+          description: "The document date displayed on the invoice PDF. 
+                        The default value is the current date. 
+                        Provide this value to backdate the invoice. 
+                        Backdating an invoice is done for reasons such as booking revenue for a previous date or when the subscription is effective as of a past date. 
+                        Moreover, if create_pending_invoices is set to true, and if the site is configured to set invoice dates to the date of closing, then upon invoice closure, this date is changed to the invoice closing date. 
+                        Taxes and line_item_taxes are computed based on the tax configuration as of invoice_date. 
+                        When passing this parameter, the following prerequisites must be met:
+                        invoice_date must be in the past.
+                        It is not earlier than start_date.
+                        It is not more than one calendar month into the past. Eg. If today is 13th January, then you cannot pass a value that is earlier than 13th December.
+                        invoice_immediately is true.
+                        optional, timestamp(UTC) in seconds"
         - name: start_date
-          description: ""
+          description: "Applicable only for 'future' subscriptions. The scheduled start time of the subscription.
+                        optional, timestamp(UTC) in seconds"
         - name: amount
-          description: ""
+          description: "The amount to be charged. The unit depends on the type of currency.
+                        optional, in cents, min=1. API docs don't seem to match data, which is decimal.
+                        Have we made it decimal in airflow jobs?"
         - name: status
-          description: ""
+          description: "Current state of the subscription.
+                        Paid/Voided/Payment Due/Not Paid"
         - name: paid_on
-          description: ""
+          description: "can be null, probably when invoice not paid"
         - name: next_retry
-          description: ""
+          description: "looks like timestamp of when the payment will next be tried to be taken, nullable"
         - name: refunded_amount
-          description: ""
+          description: "decimal of refund amount"
         - name: recurring
-          description: ""
+          description: "boolean as to whether this is a recurring invoice or not, is never null"
         - name: first_invoice
-          description: ""
+          description: "boolean as to whether this is their first invoice or not, is never null"
         - name: customer_first_name
           description: ""
         - name: customer_last_name
           description: ""
         - name: customer_email
-          description: ""
+          description: "never null and always has @ so seems to be valid"
         - name: customer_company
           description: ""
         - name: tax_total
@@ -322,27 +345,27 @@ sources:
         - name: po_number
           description: ""
         - name: amount_due
-          description: ""
+          description: "looks like decimal of amount owed, usually 0"
         - name: adjustments
-          description: ""
+          description: "usually zero, are these refunds or chargebacks?"
         - name: credits_applied
-          description: ""
+          description: "very rarely non-zero, is this staff?"
         - name: payments
-          description: ""
+          description: "looks to be the payment in decimal, maybe how much they pay and how much for the full year"
         - name: write_off_amount
-          description: ""
+          description: "usually zero, is this when they are arrears and then don't pay, so not a refund but a loss?"
         - name: currency
-          description: ""
+          description: "always USD"
         - name: net_term_days
-          description: ""
+          description: "always zero"
         - name: due_date
-          description: ""
+          description: "date invoice is due?"
         - name: voided_at
-          description: ""
+          description: "usually null, what does this mean?"
         - name: customer_billing_country
-          description: ""
+          description: "ISO 3166 alpha-2 country code"
         - name: dunning_status
-          description: ""
+          description: "usually null for when payment is successful, can be exhausted/stopped/success/in progress"
         - name: load_ts
           description: ""
         - name: update_ts
@@ -488,49 +511,54 @@ sources:
           description: ""
 
     - name: chargebee_subscriptions
+      description: "details about subscriptions on chargebee, with one record
+                    per subscription and is the current state, in future we can
+                    use the load/update ts to diff new data and old to get state
+                    change over time"
       columns:
         - name: event_date
-          description: ""
+          description: "not null, given even spread suggests it's date of subscription record"
         - name: site
           description: ""
         - name: subscriptions_id
-          description: ""
+          description: "never null"
         - name: subscriptions_plan_id
-          description: ""
+          description: "64 different plans in here, some config of frequency and amount, not consistently named"
         - name: subscriptions_plan_quantity
-          description: ""
+          description: "always 1"
         - name: subscriptions_status
-          description: ""
+          description: "Cancelled/Active/In Trial/Non Renewing"
         - name: subscriptions_start_date
-          description: ""
+          description: "always null"
         - name: subscriptions_trial_start
-          description: ""
+          description: "never null"
         - name: subscriptions_trial_end
-          description: ""
+          description: "never null"
         - name: subscriptions_current_term_start
-          description: ""
+          description: "nulls exist possibly for ended subs"
         - name: subscriptions_current_term_end
-          description: ""
+          description: "nulls exist possibly for ended subs"
         - name: subscriptions_remaining_billing_cycles
-          description: ""
+          description: "mostly None or 0, not sure what this means"
         - name: subscriptions_created_at
-          description: ""
+          description: "never null"
         - name: subscriptions_started_at
-          description: ""
+          description: "never null"
         - name: subscriptions_activated_at
-          description: ""
+          description: "can be null, probably for subs cancelled before activation"
         - name: subscriptions_cancelled_at
-          description: ""
+          description: "can be null, probably for ongoing subscriptions"
         - name: subscriptions_cancel_reason
-          description: ""
+          description: "usually null, assumed for when it's not cancelled. 17 other reasons, some customer driven some others
+                        mostly not paid or other"
         - name: customers_id
-          description: ""
+          description: "never null"
         - name: customers_first_name
           description: ""
         - name: customers_last_name
           description: ""
         - name: customers_email
-          description: ""
+          description: "never null and always has @ so probably always valid email"
         - name: customers_phone
           description: ""
         - name: customers_company
@@ -538,13 +566,13 @@ sources:
         - name: customers_vat_number
           description: ""
         - name: customers_auto_collection
-          description: ""
+          description: "on/off very rarely off"
         - name: customers_offline_payment_method
-          description: ""
+          description: "always null or no preference (tiny minority of latter)"
         - name: customers_auto_close_invoice
-          description: ""
+          description: "always null"
         - name: customers_created_at
-          description: ""
+          description: "timestamp in to seconds, never null should test this"
         - name: cards_first_name
           description: ""
         - name: cards_last_name
@@ -592,9 +620,12 @@ sources:
         - name: billing_addresses_billing_state_code
           description: ""
         - name: customers_cf_mparticle_id
-          description: ""
+          description: "id to link to app events from mparticle event collection.
+                        never null, should test. Can be blank string which is null effectively.
+                        Elegant test would be to check if there are app events beyond the trial period
+                        with no mparticle_id here"
         - name: customers_cf_advertising_id
-          description: ""
+          description: "what platform does this id refer to, it's usually populated"
         - name: customers_cf_scheduled_cancellation
           description: ""
         - name: customers_cf_cid
@@ -602,31 +633,31 @@ sources:
         - name: addresses_state_code
           description: ""
         - name: subscriptions_next_billing_amount
-          description: ""
+          description: "looks to be next invoice amount decimal"
         - name: subscriptions_po_number
           description: ""
         - name: subscriptions_mrr
-          description: ""
+          description: "looks to be total monthly invoiced amount, often zero maybe for trial?"
         - name: customers_customer_portal_status
           description: ""
         - name: subscriptions_currency
-          description: ""
+          description: "always USD"
         - name: billing_addresses_validation_status
           description: ""
         - name: addresses_validation_status
           description: ""
         - name: customers_net_term_days
-          description: ""
+          description: "always zero"
         - name: customers_taxability
           description: ""
         - name: customers_locale
-          description: ""
+          description: "always null"
         - name: subscriptions_next_billing_at
-          description: ""
+          description: "usually null, is this because most subscriptions have been cancelled"
         - name: subscriptions_plan_unit_price
-          description: ""
+          description: "always 19, 79, 39, 9 or 15"
         - name: subscriptions_setup_fee
-          description: ""
+          description: "usually null, or string None"
         - name: billing_addresses_first_name
           description: ""
         - name: billing_addresses_last_name
@@ -640,25 +671,25 @@ sources:
         - name: billing_addresses_billing_addr3
           description: ""
         - name: subscriptions_auto_collection
-          description: ""
+          description: "always null"
         - name: subscriptions_offline_payment_method
-          description: ""
+          description: "always null"
         - name: subscriptions_auto_close_invoices
-          description: ""
+          description: "always null"
         - name: subscriptions_create_pending_invoices
-          description: ""
+          description: "always null"
         - name: subscriptions_pause_date
-          description: ""
+          description: "always null"
         - name: subscriptions_resume_date
-          description: ""
+          description: "always null"
         - name: subscriptions_plan_amount
-          description: ""
+          description: "always 19, 79, 39, 9 or 15"
         - name: subscriptions_plan_quantity_in_decimal
-          description: ""
+          description: "always null"
         - name: subscriptions_plan_unit_price_in_decimal
-          description: ""
+          description: "always null"
         - name: subscriptions_plan_amount_in_decimal
-          description: ""
+          description: "always null"
         - name: load_ts
           description: ""
         - name: update_ts
@@ -908,57 +939,65 @@ sources:
           description: ""
 
     - name: chargebee_transactions
+      description: "details about chargebee transactions,
+                    is not unique by transaction_id, this is a state
+                    change table. Customer_id and customer_email can be null
+                    but not both at the same time."
       columns:
         - name: event_date
-          description: ""
+          description: "date not timestamp, of transaction"
         - name: site
           description: ""
         - name: transaction_id
-          description: ""
+          description: "never null"
         - name: customer_id
-          description: ""
+          description: "is null part of the time 72k out of 2m"
         - name: invoice_number
-          description: ""
+          description: "usually None, but otherwise looks to be an id"
         - name: date
-          description: ""
+          description: "never null, timestamp to min"
         - name: type
-          description: ""
+          description: "payment or refund, never null"
         - name: payment_method
-          description: ""
+          description: "Card, Apple Pay, Google Pay, Paypal Express Checkout,
+                        Amazon Payments, Chargeback, Cash, Other
+                        How could it possibly be cash!!! Chargeback isn't a payment method"
         - name: amount
-          description: ""
+          description: "payment amount, decimal"
         - name: status
-          description: ""
+          description: "Failure/Success/Needs Attention/In Progress/Timeout
+                        most records are Failure probably because of Denning"
         - name: authorization_reason
-          description: ""
+          description: "always null"
         - name: error_code
-          description: ""
+          description: "null or .-. most of the time, then 101 other codes"
         - name: error_text
-          description: ""
+          description: "null or 318 string reasons"
         - name: gateway
-          description: ""
+          description: "payment gateway provider:
+                        Adyen/Stripe/Checkout.com/Paypal Express Checkout/Amazon Payments/Braintree/Not Applicable"
         - name: card_type
           description: ""
         - name: id_at_gateway
-          description: ""
+          description: "85k nulls out of 2m records, integer id unsure what it's related to"
         - name: reference_number
-          description: ""
+          description: "always null"
         - name: voided_at
-          description: ""
+          description: "always null"
         - name: customer_first_name
           description: ""
         - name: customer_last_name
           description: ""
         - name: customer_email
-          description: ""
+          description: "is null part of the time"
         - name: customer_company
           description: ""
         - name: currency
-          description: ""
+          description: "always USD"
         - name: amount_unused
-          description: ""
+          description: "almost always 0, is this where we've taken payment early?"
         - name: amount_capturable
-          description: ""
+          description: "always 0"
         - name: creditnote_number
           description: ""
         - name: reference_authorization_id
@@ -2781,115 +2820,185 @@ sources:
           description: ""
 
     - name: revenuecat_able
+      description: "https://docs.revenuecat.com/docs/etl-exports
+                    
+                    All transaction data is based on the store receipts that RevenueCat has received. Receipts often have inconsistencies and quirks which may need to be considered. For example:
+                    The expiration date of a purchase can be before the purchase date. This is Google's way of invalidating a transaction, for example when Google is unable to bill a user some time after a subscription renews. This doesn’t occur on iOS.
+                    Google returns only 90 days of recent transaction history, so some old transactions maybe missing if Google fetch tokens were imported.
+                    Apple and Google do not provide the transaction price directly, so we must rely on historical data for the products that we have. This isn’t 100% accurate in cases where the prices were changed or receipts were imported.
+                    Renewal numbers start at 1, even for trials. Trial conversions increase the renewal number.
+                    Data is pulled from a snapshot of the current receipt state, this means that the same transaction can be different from one delivery to another if something changed, e.g.refunds, and billing issues. You should recompute metrics for past time periods periodically to take these changes into account.
+                    We try to normalize or at least annotate these quirks as much as possible, but by and large we consider receipts as the sources of truth, so any inconsistencies in the transaction data can always be traced back to the receipt"
       columns:
         - name: rc_original_app_user_id
-          description: ""
+          description: "Can be used as a unique user identifier to find all of a user's transactions.
+                        ids of different formats, never null"
         - name: rc_last_seen_app_user_id_alias
-          description: ""
+          description: "Can be used together with rc_original_app_user_id to match transactions with user identifiers in your systems."
         - name: country
-          description: ""
+          description: "Last seen country of the subscriber.
+                        part None, ISO 3166 alpha-2 country code."
         - name: product_identifier
-          description: ""
+          description: "The product identifier that was purchased.
+                        related to subscription type"
         - name: start_time
-          description: ""
+          description: "Purchase time of transaction.
+                        never null"
         - name: end_time
-          description: ""
+          description: "Expiration time of subscription. Null when is_auto_renewable = false
+                        For Google Play, end_time can be before start_time to indicate an invalid transaction (e.g. billing issue).
+                        can be null, probably for ongoing subscriptions"
         - name: store
-          description: ""
+          description: "The source of the transaction. Can be app_store, play_store, stripe, or promotional.
+                        which app store it relates to, app_store/play_store minority of promotional which could be staff"
         - name: is_auto_renewable
-          description: ""
+          description: "true for auto-renewable subscriptions, false otherwise.
+                        Boolean, very few false, never null"
         - name: is_trial_period
-          description: ""
+          description: "true if the transaction was a trial.
+                        Boolean, never null"
         - name: is_in_intro_offer_period
-          description: ""
+          description: "true if the transaction is in an introductory offer period.
+                        vast majority false, as this must pass for most subs, never null"
         - name: is_sandbox
-          description: ""
+          description: "true for transactions made in a sandbox environment.
+                        boolean vast majority false, True could be testing, never null"
         - name: price_in_usd
-          description: ""
+          description: "The gross revenue generated from the transaction. All prices are converted to USD. Can be null if product prices haven't been collected from the user's device.
+                        subs price in USD, never null, majority zero could be for ended subs or trials"
         - name: takehome_percentage
-          description: ""
+          description: "0.7 or 0.85. Use this to calculate the proceeds of a transaction.
+                        mostly 0.7, some 0.85 and minority 1.0 which looks like staff and is always promotional"
         - name: store_transaction_id
-          description: ""
+          description: "orderId or transaction_identifier. ​Can be used as unique id.
+                        never null"
         - name: original_store_transaction_id
-          description: ""
+          description: "orderId of first purchase or original_transaction_id. Can be used to find all related transactions for a single subscription."
         - name: refunded_at
-          description: ""
+          description: "When a refund was detected, null if none was detected. Can be checked for existence to indicate transactions which have been refunded.
+                        NaT strings representing nulls where refunds didn't happen, timestamp"
         - name: unsubscribe_detected_at
-          description: ""
+          description: "When we detected an unsubscribe (opt-out of auto renew).
+                        Nulls probably representing where unscribes didn't happen or weren't explicit"
         - name: billing_issues_detected_at
-          description: ""
+          description: "When we detected billing issues, null if none was detected.
+                        lots of Nulls probably because billing issues aren't always detected"
         - name: purchased_currency
-          description: ""
+          description: "The currency that was used for the transaction.
+                        currency of transaction, 3 char iso code"
         - name: price_in_purchased_currency
-          description: ""
+          description: "The product's price in the currency that was used for the transaction.
+                        Some None entries, decimal field"
         - name: entitlement_identifiers
-          description: ""
+          description: "An array of entitlements that the transaction unlocked or null if it didn't unlock any entitlements.
+                        usually {}, {subscription} or None"
         - name: renewal_number
-          description: ""
+          description: "Always starts at 1. Trial conversions are counted as renewals. is_trial_conversion is used to signify whether a transaction was a trial conversion.
+                        looks to be a transaction number since starting sub"
         - name: is_trial_conversion
-          description: ""
+          description: "If true, this transaction is a trial conversion.
+                        boolean, never null, assume means whether sub was a trial conversion"
         - name: presented_offering
-          description: ""
+          description: "The offering presented to users. Can be used to filter Experiment transactions.
+                        None/Plan2/Plan1"
         - name: reserved_subscriber_attributes
-          description: ""
+          description: "The reserved subscriber attributes set for the subscriber. Keys begin with $.
+                        json blog including ad fields and user agent fields"
         - name: custom_subscriber_attributes
-          description: ""
+          description: "The custom attributes set for the subscriber.
+                        always empty, so we must not be setting anything"
         - name: platform
-          description: ""
+          description: "Last seen platform of the subscriber.
+                        app platform iOS, android or None"
 
     - name: revenuecat_hint
+      description: "https://docs.revenuecat.com/docs/etl-exports
+                    
+                    All transaction data is based on the store receipts that RevenueCat has received. Receipts often have inconsistencies and quirks which may need to be considered. For example:
+                    The expiration date of a purchase can be before the purchase date. This is Google's way of invalidating a transaction, for example when Google is unable to bill a user some time after a subscription renews. This doesn’t occur on iOS.
+                    Google returns only 90 days of recent transaction history, so some old transactions maybe missing if Google fetch tokens were imported.
+                    Apple and Google do not provide the transaction price directly, so we must rely on historical data for the products that we have. This isn’t 100% accurate in cases where the prices were changed or receipts were imported.
+                    Renewal numbers start at 1, even for trials. Trial conversions increase the renewal number.
+                    Data is pulled from a snapshot of the current receipt state, this means that the same transaction can be different from one delivery to another if something changed, e.g.refunds, and billing issues. You should recompute metrics for past time periods periodically to take these changes into account.
+                    We try to normalize or at least annotate these quirks as much as possible, but by and large we consider receipts as the sources of truth, so any inconsistencies in the transaction data can always be traced back to the receipt"
       columns:
         - name: rc_original_app_user_id
-          description: ""
+          description: "Can be used as a unique user identifier to find all of a user's transactions.
+                        ids of different formats, never null"
         - name: rc_last_seen_app_user_id_alias
-          description: ""
+          description: "Can be used together with rc_original_app_user_id to match transactions with user identifiers in your systems."
         - name: country
-          description: ""
+          description: "Last seen country of the subscriber.
+                        part None, ISO 3166 alpha-2 country code."
         - name: product_identifier
-          description: ""
+          description: "The product identifier that was purchased.
+                        related to subscription type"
         - name: start_time
-          description: ""
+          description: "Purchase time of transaction.
+                        never null"
         - name: end_time
-          description: ""
+          description: "Expiration time of subscription. Null when is_auto_renewable = false
+                        For Google Play, end_time can be before start_time to indicate an invalid transaction (e.g. billing issue).
+                        can be null, probably for ongoing subscriptions"
         - name: store
-          description: ""
+          description: "The source of the transaction. Can be app_store, play_store, stripe, or promotional.
+                        which app store it relates to, app_store/play_store minority of promotional which could be staff"
         - name: is_auto_renewable
-          description: ""
+          description: "true for auto-renewable subscriptions, false otherwise.
+                        Boolean, very few false, never null"
         - name: is_trial_period
-          description: ""
+          description: "true if the transaction was a trial.
+                        Boolean, never null"
         - name: is_in_intro_offer_period
-          description: ""
+          description: "true if the transaction is in an introductory offer period.
+                        vast majority false, as this must pass for most subs, never null"
         - name: is_sandbox
-          description: ""
+          description: "true for transactions made in a sandbox environment.
+                        boolean vast majority false, True could be testing, never null"
         - name: price_in_usd
-          description: ""
+          description: "The gross revenue generated from the transaction. All prices are converted to USD. Can be null if product prices haven't been collected from the user's device.
+                        subs price in USD, never null, majority zero could be for ended subs or trials"
         - name: takehome_percentage
-          description: ""
+          description: "0.7 or 0.85. Use this to calculate the proceeds of a transaction.
+                        mostly 0.7, some 0.85 and minority 1.0 which looks like staff and is always promotional"
         - name: store_transaction_id
-          description: ""
+          description: "orderId or transaction_identifier. ​Can be used as unique id.
+                        never null"
         - name: original_store_transaction_id
-          description: ""
+          description: "orderId of first purchase or original_transaction_id. Can be used to find all related transactions for a single subscription."
         - name: refunded_at
-          description: ""
+          description: "When a refund was detected, null if none was detected. Can be checked for existence to indicate transactions which have been refunded.
+                        NaT strings representing nulls where refunds didn't happen, timestamp"
         - name: unsubscribe_detected_at
-          description: ""
+          description: "When we detected an unsubscribe (opt-out of auto renew).
+                        Nulls probably representing where unscribes didn't happen or weren't explicit"
         - name: billing_issues_detected_at
-          description: ""
+          description: "When we detected billing issues, null if none was detected.
+                        lots of Nulls probably because billing issues aren't always detected"
         - name: purchased_currency
-          description: ""
+          description: "The currency that was used for the transaction.
+                        currency of transaction, 3 char iso code"
         - name: price_in_purchased_currency
-          description: ""
+          description: "The product's price in the currency that was used for the transaction.
+                        Some None entries, decimal field"
         - name: entitlement_identifiers
-          description: ""
+          description: "An array of entitlements that the transaction unlocked or null if it didn't unlock any entitlements.
+                        usually {}, {subscription} or None"
         - name: renewal_number
-          description: ""
+          description: "Always starts at 1. Trial conversions are counted as renewals. is_trial_conversion is used to signify whether a transaction was a trial conversion.
+                        looks to be a transaction number since starting sub"
         - name: is_trial_conversion
-          description: ""
+          description: "If true, this transaction is a trial conversion.
+                        boolean, never null, assume means whether sub was a trial conversion"
         - name: presented_offering
-          description: ""
+          description: "The offering presented to users. Can be used to filter Experiment transactions.
+                        None/Plan2/Plan1"
         - name: reserved_subscriber_attributes
-          description: ""
+          description: "The reserved subscriber attributes set for the subscriber. Keys begin with $.
+                        json blog including ad fields and user agent fields"
         - name: custom_subscriber_attributes
-          description: ""
+          description: "The custom attributes set for the subscriber.
+                        always empty, so we must not be setting anything"
         - name: platform
-          description: ""
+          description: "Last seen platform of the subscriber.
+                        app platform iOS, android or None"
