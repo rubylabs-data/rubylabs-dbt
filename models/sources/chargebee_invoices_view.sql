@@ -14,13 +14,13 @@ select
     safe_cast(refunded_amount as float64) refunded_amount,
     safe_cast(recurring as bool) recurring,
     safe_cast(first_invoice as bool) first_invoice,
-    customer_first_name customer_first_name,
-    customer_last_name customer_last_name,
-    customer_email email,
-    customer_company customer_company,
+    --customer_first_name customer_first_name,
+    --customer_last_name customer_last_name,
+    {{email_hash('customer_email')}} email,
+    --customer_company customer_company,
     safe_cast(tax_total as float64) tax_total,
-    vat_number vat_number,
-    po_number po_number,
+    --vat_number vat_number,
+    --po_number po_number,
     safe_cast(amount_due as float64) amount_due,
     safe_cast(adjustments as float64) adjustments,
     safe_cast(credits_applied as float64) credits_applied,
@@ -32,5 +32,7 @@ select
     voided_at voided_at,
     safe_cast(invoice_number as int64) invoice_number,
     split(site, '-') [safe_offset(1)] acc,
-    dunning_status dunning_status
+    dunning_status dunning_status,
+    load_ts,
+    update_ts
 from {{ source('staging', 'chargebee_invoices') }}
