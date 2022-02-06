@@ -1,4 +1,4 @@
-{{ config(materialized="ephemeral") }}
+{{ config(materialized='ephemeral') }}
 
 select
     date,
@@ -26,6 +26,6 @@ select
     max(billing_issues_detected_at) billing_issues_detected_at,
     max(refunded_at) refunded_at,
     max(unsubscribe_detected_at) cancelled_at
-from {{ ref("app_transactions_eph") }}
+from {{ ref('app_transactions_eph') }}
 {{ dbt_utils.group_by(n=12) }}
 

@@ -2910,6 +2910,10 @@ sources:
         - name: platform
           description: "Last seen platform of the subscriber.
                         app platform iOS, android or None"
+        - name: load_ts
+          description: "timestamp record was inserted"
+        - name: update_ts
+          description: "timestamp record was updated, will be after load_ts"
 
     - name: revenuecat_hint
       description: "https://docs.revenuecat.com/docs/etl-exports
@@ -3002,3 +3006,7 @@ sources:
         - name: platform
           description: "Last seen platform of the subscriber.
                         app platform iOS, android or None"
+        - name: load_ts
+          description: "timestamp record was inserted"
+        - name: update_ts
+          description: "timestamp record was updated, will be after load_ts"                        
