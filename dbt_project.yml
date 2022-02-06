@@ -56,3 +56,8 @@ models:
         - "shared"
         - "external"
       +schema: shared
+    user:
+      +tags:
+        - "user"
+        - "external"
+      +schema: user
