@@ -27,5 +27,5 @@ select
     ,
     store_transaction_id,
     original_store_transaction_id
-from {{ source("staging", "revenuecat_able") }}
+from {{ source('staging', 'revenuecat_able') }}
 where is_sandbox = false and store != 'promotional'

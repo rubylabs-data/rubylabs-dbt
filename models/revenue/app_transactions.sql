@@ -6,7 +6,7 @@ select
     end_time,
     subscriber_id,
     app_name,
-    {{ platform_lookup("processing") }} as platform,
+    {{ platform_lookup('processing') }} as platform,
     country,
     plan_id,
     currency,
@@ -24,4 +24,4 @@ select
     original_store_transaction_id,
     is_auto_renewable,
     is_trial_period
-from {{ ref("app_transactions_agg_eph") }}
+from {{ ref('app_transactions_agg_eph') }}

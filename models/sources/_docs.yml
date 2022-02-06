@@ -18,31 +18,9 @@ models:
         description: "? from API docs"
         tests:
           - not_null
-      - name: first_name
-        description: "? from API docs"
-      - name: last_name
-        description: "? from API docs"
-      - name: company
-        description: "? from API docs"
-      - name: phone
-        description: "? from API docs"
-      - name: vat_number
-        description: "? from API docs"
-      - name: billing_address_line1
-        description: "? from API docs"
-      - name: billing_address_line2
-        description: "? from API docs"
-      - name: billing_address_city
-        description: "? from API docs"
-      - name: billing_address_state
-        description: "? from API docs"
       - name: country
         description: "? from API docs"
-      - name: billing_address_zip
-        description: "? from API docs"
       - name: auto_collection
-        description: "? from API docs"
-      - name: offline_payment_method
         description: "? from API docs"
       - name: card_status
         description: "? from API docs"
@@ -54,45 +32,7 @@ models:
         description: "? from API docs"
       - name: acc
         description: "? from API docs"
-      - name: cid
-        description: "? from API docs"
-      - name: billing_address_state_code
-        description: "? from API docs"
       - name: customer_portal_status
-        description: "? from API docs"
-      - name: net_term_days
-        description: "? from API docs"
-      - name: taxability
-        description: "? from API docs"
-      - name: locale
-        description: "? from API docs"
-      - name: billing_address_first_name
-        description: "? from API docs"
-      - name: billing_address_last_name
-        description: "? from API docs"
-      - name: billing_address_email
-        description: "? from API docs"
-      - name: billing_address_company
-        description: "? from API docs"
-      - name: billing_address_phone
-        description: "? from API docs"
-      - name: billing_address_line3
-        description: "? from API docs"
-      - name: billing_address_validation_status
-        description: "? from API docs"
-      - name: is_location_valid
-        description: "? from API docs"
-      - name: vat_number_status
-        description: "? from API docs"
-      - name: vat_number_validated_time
-        description: "? from API docs"
-      - name: vat_number_prefix
-        description: "? from API docs"
-      - name: parent
-        description: "? from API docs"
-      - name: payment_owner
-        description: "? from API docs"
-      - name: auto_close_invoice
         description: "? from API docs"
       - name: load_ts
         description: ""
@@ -294,8 +234,6 @@ models:
               field: customer_id        
       - name: invoice_number
         description: "? from API docs"
-        tests:
-          - not_null
       - name: date
         description: "? from API docs"
       - name: type
