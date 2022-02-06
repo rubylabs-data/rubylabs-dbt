@@ -240,8 +240,6 @@ models:
         description: "? from API docs"
       - name: card_type
         description: "? from API docs"
-      - name: customer_email
-        description: "? from API docs"
       - name: currency
         description: "? from API docs"
       - name: amount_unused

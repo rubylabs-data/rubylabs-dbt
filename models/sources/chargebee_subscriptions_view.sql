@@ -33,5 +33,7 @@ select
     safe_cast(subscriptions_plan_amount as float64) subscription_plan_amount,
     subscriptions_plan_quantity_in_decimal subscription_plan_quantity_in_decimal,
     subscriptions_plan_unit_price_in_decimal subscription_plan_unit_price_in_decimal,
-    subscriptions_plan_amount_in_decimal subscription_plan_amount_in_decimal
+    subscriptions_plan_amount_in_decimal subscription_plan_amount_in_decimal,
+    load_ts,
+    update_ts
 from {{ source('staging', 'chargebee_subscriptions') }}
