@@ -87,5 +87,5 @@ select
                 '$.mparticleId.updated_at_ms'
             ) as int
         )
-    ) mparticleid_updated_ts,
+    ) mparticleid_updated_ts
 from {{ source('staging', 'revenuecat_able') }}
