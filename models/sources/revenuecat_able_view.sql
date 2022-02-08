@@ -23,6 +23,17 @@ select
         )
     ) idfv_updated_ts,
     json_extract_scalar(
+        replace(reserved_subscriber_attributes, '$', ''), '$.adGroup.value'
+    ) adGroup,
+    timestamp_millis(
+        safe_cast(
+            json_extract_scalar(
+                replace(reserved_subscriber_attributes, '$', ''),
+                '$.adGroup.updated_at_ms'
+            ) as int
+        )
+    ) adGroup_updated_ts,
+    json_extract_scalar(
         replace(reserved_subscriber_attributes, '$', ''), '$.adjustId.value'
     ) adjustid,
     timestamp_millis(
@@ -33,6 +44,28 @@ select
             ) as int
         )
     ) adjustid_updated_ts,
+    json_extract_scalar(
+        replace(reserved_subscriber_attributes, '$', ''), '$.campaign.value'
+    ) campaign,
+    timestamp_millis(
+        safe_cast(
+            json_extract_scalar(
+                replace(reserved_subscriber_attributes, '$', ''),
+                '$.campaign.updated_at_ms'
+            ) as int
+        )
+    ) campaign_updated_ts,
+    json_extract_scalar(
+        replace(reserved_subscriber_attributes, '$', ''), '$.creative.value'
+    ) creative,
+    timestamp_millis(
+        safe_cast(
+            json_extract_scalar(
+                replace(reserved_subscriber_attributes, '$', ''),
+                '$.creative.updated_at_ms'
+            ) as int
+        )
+    ) creative_updated_ts,
     json_extract_scalar(
         replace(reserved_subscriber_attributes, '$', ''), '$.mediaSource.value'
     ) mediasource,
