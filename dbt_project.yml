@@ -41,16 +41,6 @@ models:
         - "revenue"
         - "lightdash"
       +schema: revenue
-    product:
-      +tags:
-        - "product"
-        - "lightdash"
-      +schema: product
-    backend:
-      +tags:
-        - "backend"
-        - "lightdash"
-      +schema: backend
     shared:
       +tags:
         - "shared"
