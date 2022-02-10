@@ -1,8 +1,15 @@
 {{ config(materialized='view') }}
 
+with sub_cus_id as
+(
+    select distinct subscriptions_id, customers_id as customer_id
+    from {{source('staging','chargebee_subscriptions')}}
+)
+
 select
+    {{dbt_utils.surrogate_key(['site','invoice_number'])}} id,
     split(site, '-') [safe_offset(0)] app_name,
-    customer_id,
+    coalesce(nullif(i.customer_id,''), s.customer_id) customer_id,
     subscription_id subscription_id,
     safe.parse_datetime('%d-%b-%Y %H:%M', invoice_date) invoice_date,
     safe.parse_datetime('%d-%b-%Y %H:%M', start_date) start_date,
@@ -35,4 +42,5 @@ select
     dunning_status dunning_status,
     load_ts,
     update_ts
-from {{ source('staging', 'chargebee_invoices') }}
+from {{ source('staging', 'chargebee_invoices') }} i
+left join sub_cus_id s on i.subscription_id = s.subscriptions_id

@@ -42,16 +42,32 @@ models:
   - name: chargebee_invoices_view
     description: "details about each invoice on web"
     columns:
+      - name: id
+        description: "surrogate key made from site and invoice_number, EDA showed they were unique together"
+        tests:
+          - not_null
+          - unique
+          - not_one_to_many:
+              field: customer_id  
       - name: app_name
         description: "? from API docs"
+        tests:
+          - accepted_values:
+              values: ['able','hint']
       - name: customer_id
         description: "? from API docs"
         tests:
+          - not_null
           - relationships:
               to: ref('chargebee_customers_view')
               field: customer_id
       - name: subscription_id
         description: "? from API docs"
+        tests:
+          - not_one_to_many:
+              field: customer_id
+              config:
+                severity: warn              
       - name: invoice_date
         description: "? from API docs"
       - name: start_date
@@ -97,7 +113,7 @@ models:
       - name: invoice_number
         description: "? from API docs"
         tests:
-          - not_null
+          - not_null        
       - name: acc
         description: "? from API docs"
       - name: dunning_status
@@ -112,12 +128,25 @@ models:
     columns:
       - name: app_name
         description: "? from API docs"
+        tests:
+          - accepted_values:
+              values: ['able','hint']
 
       - name: subscription_id
         description: "? from API docs"
+        tests:
+          - unique
+          - not_null
+          - not_one_to_many:
+              field: customer_id
 
       - name: customer_id
         description: "? from API docs"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('chargebee_customers_view')
+              field: customer_id
 
       - name: plan_id
         description: "? from API docs"
@@ -210,15 +239,27 @@ models:
   - name: chargebee_transactions_view
     description: "details about each transaction on web"
     columns:
+      - name: id
+        description: "surrogate key made from site and transaction_id"
+        tests:
+          - not_null
       - name: app_name
         description: "? from API docs"
+        tests:
+          - accepted_values:
+              values: ['able','hint']
       - name: transaction_id
         description: "? from API docs"
         tests:
           - not_null
+          - not_one_to_many:
+              field: customer_id
       - name: customer_id
-        description: "? from API docs"
+        description: "is null only for failed transactions, and three apple pay hint transactions from summer 2021, probably testing"
         tests:
+          - not_null:
+              config:
+                severity: warn
           - relationships:
               to: ref('chargebee_customers_view')
               field: customer_id        

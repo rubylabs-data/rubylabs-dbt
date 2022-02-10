@@ -283,9 +283,7 @@ sources:
           description: ""
 
     - name: chargebee_invoices
-      description: "details about chargebee invoices, seems to have up to
-                    four records per invoice_number so seems like state change
-                    table. customer_id and customer_email are never null"
+      description: "details about chargebee invoices, invoice_number is not unique but combination of site and invoice number is"
       columns:
         - name: event_date
           description: ""
