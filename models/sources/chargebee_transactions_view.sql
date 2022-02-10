@@ -1,10 +1,18 @@
 {{ config(materialized='view') }}
 
+with invoice_ids_cus_ids as
+(
+    select distinct id, customer_id
+    from {{ref('chargebee_invoices_view')}}
+)
+
 select
+    {{dbt_utils.surrogate_key(['site','transaction_id'])}} id,    
     split(site, '-') [safe_offset(0)] app_name,
     transaction_id,
-    coalesce(nullif(ct.customer_id,''), p.customer_id) customer_id,
-    safe_cast(ct.invoice_number as int64) invoice_number,
+    coalesce(nullif(t.customer_id,''), i.customer_id) customer_id,
+    safe_cast(t.invoice_number as int64) invoice_number,
+    {{dbt_utils.surrogate_key(['site','invoice_number'])}} invoice_id,
     safe.parse_timestamp('%d-%b-%Y %H:%M', date) date,
     type,
     payment_method,
@@ -21,5 +29,6 @@ select
     split(site, '-') [safe_offset(1)] acc,
     load_ts,
     update_ts
-from {{ source('staging', 'chargebee_transactions') }} ct
-left join {{ ref('chargebee_invno_cusid_perms') }} p on ct.invoice_number = p.invoice_number
+from {{ source('staging', 'chargebee_transactions') }} t
+left join invoice_ids_cus_ids i 
+on i.id = {{dbt_utils.surrogate_key(['site','invoice_number'])}}
