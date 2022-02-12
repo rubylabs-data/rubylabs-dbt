@@ -1,4 +1,4 @@
-  select
+  select 
   a.app_name 
   , a.customer_id--, date(a.start_date) start_date
   , date(a.invoice_date) invoice_date, date(a.paid_on) paid_on
@@ -12,11 +12,12 @@
   , b.mparticle_id, b.advertising_id
 -- select * from `data-analytics-265916.dwh_v2.chargebee_invoices_view` limit 1000;
 --select * from `data-analytics-265916.dwh_v2.chargebee_invoices_view` where customer_id = '970f68e7-82de-41bd-926b-dd0a81e58f1a' limit 1000;
- from (select distinct * from {{ source('staging', 'chargebee_invoices_view') }}) a 
+
+from {{ ref('chargebee_invoices_view') }} a
 -- select * from `data-analytics-265916.dwh_v2.chargebee_customers_view` limit 1000;
- left join (select distinct * from  {{ source('staging', 'chargebee_customers_view') }}) b
+ 
+
+ left join  {{ ref('chargebee_customers_view') }} b
   ON a.customer_id = b.customer_id AND a.app_name = b.app_name 
   where a.status = 'Paid'
 
-
---   {{ source('staging', 'chargebee_invoices_view') }}

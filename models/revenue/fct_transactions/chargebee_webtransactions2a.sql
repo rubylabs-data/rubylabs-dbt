@@ -36,9 +36,9 @@ with last1 as (
 -- select count(1), count(distinct Subscription_Id) cnt_ids from
  (
  select distinct a.*, b.email, b.country, b.created_at created_at_b
- , b.mparticle_id,	b.advertising_id,	b.CID
- from {{ source('staging', 'chargebee_subscriptions_view') }} a
- left join {{ source('staging', 'chargebee_customers_view') }} b
+ , b.mparticle_id,	b.advertising_id
+ from {{ ref('chargebee_subscriptions_view') }} a
+ left join {{ ref('chargebee_customers_view') }} b
  ON a.customer_id = b.customer_id and a.app_name = b.app_name
 -- select * from `data-analytics-265916.dwh_v2.chargebee_customers_view` limit 1000
  )  b 

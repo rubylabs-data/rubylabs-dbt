@@ -12,7 +12,7 @@ select app_name, customer_email, invoice_number, max(f_gateway) gateway, max(f_p
         , CASE WHEN type = 'Refund' and status = 'Success' THEN 1 ELSE 0 END is_refunded
         , CASE WHEN type = 'Refund' and status = 'Success' THEN date ELSE NULL END refunded_at
         , CASE WHEN payment_method = 'Chargeback' and status = 'Success' THEN 1 ELSE 0 END is_chargeback
-        FROM (select distinct * from {{ source('staging', 'chargebee_transactions_view') }} )
+        FROM  {{ ref('chargebee_transactions_view') }} 
 --SELECT * from `data-analytics-265916.dwh_v2.chargebee_transactions_view` LIMIT 1000
         where status = 'Success' 
        -- and customer_email = 'crystalruiz351@gmail.com'
