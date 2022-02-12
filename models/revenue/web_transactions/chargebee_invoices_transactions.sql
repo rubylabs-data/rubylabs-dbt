@@ -1,3 +1,5 @@
+{{ config(materialized='ephemeral') }}
+
 select a.*,
 b.gateway, b.payment_method, b.is_refunded , b.is_chargeback, b.refunded_at
 from {{ ref('chargebee_invoices_customers') }} a

@@ -20,8 +20,19 @@ select
         partition by
             app_name, subscriber_id, processing, plan_id, original_store_transaction_id
     ) cancelled_at,
+    max(is_trial_user) over (
+        partition by app_name, subscriber_id, processing
+    ) is_trial_user,
+    max(is_subscriber) over (
+        partition by app_name, subscriber_id, processing
+    ) is_subscriber,
     store_transaction_id,
     original_store_transaction_id,
     is_auto_renewable,
-    is_trial_period
+    is_trial_period,
+    safe_cast(null as boolean) as is_recurring, 
+    safe_cast(null as int) as is_chargeback,
+    adjustid as advertising_id,
+    mparticleid as mparticle_id,
+    null as email
 from {{ ref('app_transactions_agg_eph') }}
