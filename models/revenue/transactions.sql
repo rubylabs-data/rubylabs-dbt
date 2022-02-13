@@ -1,8 +1,8 @@
 {{ config(materialized='table') }}
 
 select 
-  {{ dbt_utils.star(ref('chargebee_webtransactions2')) }}
-from {{ ref('chargebee_webtransactions2') }} 
+  {{ dbt_utils.star(ref('web_transactions')) }}
+from {{ ref('web_transactions') }} 
 UNION ALL
 select
   {{ dbt_utils.star(ref('app_transactions')) }}

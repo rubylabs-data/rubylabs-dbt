@@ -31,7 +31,7 @@ select
     is_auto_renewable,
     is_trial_period,
     safe_cast(null as boolean) as is_recurring, 
-    safe_cast(null as int) as is_chargeback,
+    safe_cast(null as boolean) as is_chargeback,
     adjustid as advertising_id,
     mparticleid as mparticle_id,
     null as email
