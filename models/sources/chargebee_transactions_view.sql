@@ -21,7 +21,7 @@ select
     error_text,
     gateway,
     card_type,
-    --customer_email,
+    {{email_hash('customer_email')}} customer_email,
     currency,
     safe_cast(amount_unused as float64) amount_unused,
     safe_cast(amount_capturable as float64) amount_capturable,

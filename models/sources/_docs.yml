@@ -9,6 +9,7 @@ models:
         tests:
           - accepted_values:
               values: ['able','hint']
+          - not_null
       - name: customer_id
         description: "? from API docs"
         tests:
@@ -54,6 +55,7 @@ models:
         tests:
           - accepted_values:
               values: ['able','hint']
+          - not_null
       - name: customer_id
         description: "? from API docs"
         tests:
@@ -131,7 +133,7 @@ models:
         tests:
           - accepted_values:
               values: ['able','hint']
-
+          - not_null
       - name: subscription_id
         description: "? from API docs"
         tests:
@@ -248,6 +250,7 @@ models:
         tests:
           - accepted_values:
               values: ['able','hint']
+          - not_null
       - name: transaction_id
         description: "? from API docs"
         tests:
@@ -265,6 +268,13 @@ models:
               field: customer_id        
       - name: invoice_number
         description: "? from API docs"
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - relationships:
+              to: ref('chargebee_invoices_view')
+              field: invoice_number    
       - name: date
         description: "? from API docs"
       - name: type

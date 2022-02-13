@@ -20,7 +20,9 @@ select
     unsubscribe_detected_at,
     billing_issues_detected_at,
     store_transaction_id,
-    original_store_transaction_id
-from {{ source("staging", "revenuecat_hint") }}
+    original_store_transaction_id,
+    mparticleid,
+    adjustid
+from  {{ref('revenuecat_hint_view')}}
 where is_sandbox = false 
   and store != 'promotional'
