@@ -51,3 +51,8 @@ models:
         - "user"
         - "external"
       +schema: user
+    product:
+      +tags:
+        - "user"
+        - "product"
+      +schema: product

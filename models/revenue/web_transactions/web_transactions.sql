@@ -1,6 +1,27 @@
 {{ config(materialized='table') }}
 
-with chargebee_join as
+with invoices as
+(
+    select * from {{ ref('chargebee_invoices_view') }} where status = 'Paid'
+)
+,
+transactions as
+(
+    select
+        customer_id,
+        app_name,
+        invoice_number,
+        max(CASE WHEN type = 'Refund' THEN true ELSE false END) is_refunded,
+        max(CASE WHEN type = 'Refund' THEN date ELSE NULL END) refunded_at,
+        max(CASE WHEN payment_method = 'Chargeback' THEN true ELSE false END) is_chargeback
+    from {{ ref('chargebee_transactions_view')}}
+    where status = 'Success'
+    and customer_id is not null
+    and invoice_number is not null
+    group by customer_id, app_name, invoice_number
+)
+,
+chargebee_join as
 (
 select
     a.id,
@@ -19,29 +40,25 @@ select
     b.mparticle_id,
     b.advertising_id,
     d.plan_id,
-    CASE WHEN d.status in ('In Trial') THEN true ELSE false END is_in_trial,
-    CASE WHEN d.status in ('Active') THEN true ELSE false END is_active,
-    CASE WHEN d.status in ('Cancelled') THEN true ELSE false END is_cancelled,
-    CASE WHEN d.status in ('Non Renewing') THEN true ELSE false END is_non_renewing,
-    CASE WHEN d.Status = 'Cancelled' THEN d.Cancelled_At ELSE NULL END cancelled_at,
-    max(CASE WHEN type = 'Refund' THEN true ELSE false END) is_refunded,
-    max(CASE WHEN type = 'Refund' THEN c.date ELSE NULL END) refunded_at,
-    max(CASE WHEN payment_method = 'Chargeback' THEN true ELSE false END) is_chargeback
-from {{ ref('chargebee_invoices_view') }} a
+    CASE WHEN d.status = 'In Trial'     THEN true           ELSE false END is_in_trial,
+    CASE WHEN d.status = 'Active'       THEN true           ELSE false END is_active,
+    CASE WHEN d.status = 'Cancelled'    THEN true           ELSE false END is_cancelled,
+    CASE WHEN d.status = 'Non Renewing' THEN true           ELSE false END is_non_renewing,
+    CASE WHEN d.Status = 'Cancelled'    THEN d.Cancelled_At ELSE NULL  END cancelled_at,
+    c.is_refunded,
+    c.refunded_at,
+    c.is_chargeback
+from invoices a
 left join {{ ref('chargebee_customers_view') }} b
     on a.customer_id = b.customer_id
     and a.app_name = b.app_name
-    and a.status = 'Paid'
-left join {{ ref('chargebee_transactions_view')}} c
+left join transactions c
     on a.customer_id = c.customer_id
     and a.app_name = c.app_name
     and a.invoice_number = c.invoice_number
-    and c.status = 'Success'
-    and c.customer_id is not null
 left join {{ ref('chargebee_subscriptions_view')}} d
     on a.customer_id = d.customer_id
     and a.app_name = d.app_name
-{{dbt_utils.group_by(n=21)}}
 )
 
 select
