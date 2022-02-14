@@ -60,4 +60,4 @@ select
     user_attributes_revenuecat_original_app_user_id rc_original_app_user_id,
     user_attributes_revenuecat_app_user_id rc_app_user_id,
     user_attributes_revenuecat__adjustid
-from {{source('staging','mparticle_able_raw')}} ;
+from {{source('staging','mparticle_able_raw')}}
