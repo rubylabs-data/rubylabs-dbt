@@ -1,7 +1,7 @@
 {{ config(materialized="ephemeral") }}
 
 select
-    'able' as app_name,
+    'hint' as app_name,
     -- , start_time
     start_time date,
     end_time,
