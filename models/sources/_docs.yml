@@ -233,6 +233,10 @@ models:
 
       - name: subscription_plan_amount_in_decimal
         description: "? from API docs"
+      - name: customer_cf_mparticle_id
+        description: "mparticle id"
+      - name: customer_cf_cid
+        description: "first id in the original array, array is usually only one id long and has duplicates"
       - name: load_ts
         description: ""
       - name: update_ts
