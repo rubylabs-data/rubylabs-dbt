@@ -232,17 +232,17 @@ models:
         description: "The decimal representation of the price or per-unit price of the plan. The value is in major units of the currency. Always returned when multi-decimal pricing is enabled"
 
       - name: subscription_plan_amount_in_decimal
-<<<<<<< HEAD
-        description: "? from API docs"
+        description: "The decimal representation of the total amount for the plan, in major units of the currency. Always returned when multi-decimal pricing is enabled"
+        
       - name: customer_cf_mparticle_id
         description: "mparticle id"
+
       - name: customer_cf_cid
         description: "first id in the original array, array is usually only one id long and has duplicates"
-=======
-        description: "The decimal representation of the total amount for the plan, in major units of the currency. Always returned when multi-decimal pricing is enabled"
->>>>>>> 49c34b528ad1f18512bfc2e2b86d32f0e664b686
+
       - name: load_ts
         description: "Timestamp record was inserted"
+
       - name: update_ts
         description: "Updated timestamp, if record was modified, else null"     
 
