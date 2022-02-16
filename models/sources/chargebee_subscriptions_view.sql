@@ -34,6 +34,8 @@ select
     subscriptions_plan_quantity_in_decimal subscription_plan_quantity_in_decimal,
     subscriptions_plan_unit_price_in_decimal subscription_plan_unit_price_in_decimal,
     subscriptions_plan_amount_in_decimal subscription_plan_amount_in_decimal,
+    customers_cf_mparticle_id as customer_cf_mparticle_id, 
+    split(customers_cf_cid,',')[safe_offset(0)] customer_cf_cid,
     load_ts,
     update_ts
 from {{ source('staging', 'chargebee_subscriptions') }}
