@@ -1,0 +1,13 @@
+{{ config(
+    materialized = 'incremental',
+    unique_key = 'new_key'
+) }}
+
+with events as (
+    select * from {{ ref('crime_with_concat_key') }}
+    {% if is_incremental() %}
+    where updated_on >= (select max(updated_on) from {{ this }})
+    or updated_on >= timestamp('2020-12-31')
+    {% endif %}
+)
+select * from events
